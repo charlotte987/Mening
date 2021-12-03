@@ -64,65 +64,68 @@ function ScreenHome(props) {
   });
 
   return (
-    <div className="Login-page">
-      {/* SIGN-IN */}
+    <>
+      <div className="Login-page">
+        {/* SIGN-IN */}
 
-      <div className="Sign">
-        <Input
-          onChange={(e) => setSignInEmail(e.target.value)}
-          className="Login-input"
-          placeholder="email"
-        />
+        <div className="Sign">
+          <h3>Login to your account</h3>
+          <Input
+            onChange={(e) => setSignInEmail(e.target.value)}
+            className="Login-input"
+            placeholder="email"
+          />
 
-        <Input.Password
-          onChange={(e) => setSignInPassword(e.target.value)}
-          className="Login-input"
-          placeholder="password"
-        />
+          <Input.Password
+            onChange={(e) => setSignInPassword(e.target.value)}
+            className="Login-input"
+            placeholder="password"
+          />
 
-        {tabErrorsSignin}
+          {tabErrorsSignin}
 
-        <Button
-          onClick={() => handleSubmitSignin()}
-          style={{ width: "80px" }}
-          type="primary"
-        >
-          Sign-in
-        </Button>
+          <Button
+            onClick={() => handleSubmitSignin()}
+            style={{ width: "80px" }}
+            type="primary"
+          >
+            Sign-in
+          </Button>
+        </div>
+
+        {/* SIGN-UP */}
+
+        <div className="Sign">
+          <Input
+            onChange={(e) => setSignUpUsername(e.target.value)}
+            className="Login-input"
+            placeholder="username"
+          />
+
+          <Input
+            onChange={(e) => setSignUpEmail(e.target.value)}
+            className="Login-input"
+            placeholder="email"
+          />
+
+          <Input.Password
+            onChange={(e) => setSignUpPassword(e.target.value)}
+            className="Login-input"
+            placeholder="password"
+          />
+
+          {tabErrorsSignup}
+
+          <Button
+            onClick={() => handleSubmitSignup()}
+            style={{ width: "80px" }}
+            type="primary"
+          >
+            Sign-up
+          </Button>
+        </div>
       </div>
-
-      {/* SIGN-UP */}
-
-      <div className="Sign">
-        <Input
-          onChange={(e) => setSignUpUsername(e.target.value)}
-          className="Login-input"
-          placeholder="username"
-        />
-
-        <Input
-          onChange={(e) => setSignUpEmail(e.target.value)}
-          className="Login-input"
-          placeholder="email"
-        />
-
-        <Input.Password
-          onChange={(e) => setSignUpPassword(e.target.value)}
-          className="Login-input"
-          placeholder="password"
-        />
-
-        {tabErrorsSignup}
-
-        <Button
-          onClick={() => handleSubmitSignup()}
-          style={{ width: "80px" }}
-          type="primary"
-        >
-          Sign-up
-        </Button>
-      </div>
-    </div>
+    </>
   );
 }
 

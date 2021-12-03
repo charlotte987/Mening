@@ -7,7 +7,7 @@ var options = {
 };
 
 mongoose.connect(
-  "mongodb+srv://admin:azerty123@cluster0.7sij3.mongodb.net/morningnews?retryWrites=true&w=majority",
+  "mongodb+srv://admin:azerty123@cluster0.7sij3.mongodb.net/mening?retryWrites=true&w=majority",
   options,
   function (err) {
     console.log(err);

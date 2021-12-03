@@ -5,14 +5,15 @@ import {
   Subtitle,
   HeroLeft,
   Title,
-  Container,
   BtnLink,
   Btn,
 } from "../styles/StyledContent";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
-    <Container>
+    <>
+      <Navbar />
       <Div>
         <HeroLeft>
           <Title>Build it together</Title>
@@ -30,7 +31,7 @@ const Home = () => {
       <Div>
         <Title>Features</Title>
       </Div>
-    </Container>
+    </>
   );
 };
 

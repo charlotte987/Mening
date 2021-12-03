@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 import { devices } from "./devices";
 
-export const Container = styled.div``;
-
 export const Div = styled.div`
   display: flex;
   justify-content: center;
