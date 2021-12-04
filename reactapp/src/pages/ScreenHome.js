@@ -69,7 +69,8 @@ function ScreenHome(props) {
         {/* SIGN-IN */}
 
         <div className="Sign">
-          <h3>Login to your account</h3>
+          <h4>Welcome back !</h4>
+          <h2>Login to your account</h2>
           <Input
             onChange={(e) => setSignInEmail(e.target.value)}
             className="Login-input"
@@ -86,8 +87,10 @@ function ScreenHome(props) {
 
           <Button
             onClick={() => handleSubmitSignin()}
-            style={{ width: "80px" }}
-            type="primary"
+            style={{
+              width: "80px",
+            }}
+            // type="primary"
           >
             Sign-in
           </Button>
@@ -96,6 +99,8 @@ function ScreenHome(props) {
         {/* SIGN-UP */}
 
         <div className="Sign">
+          <h4>Or... just Welcome !</h4>
+          <h2>Sign-up to Mening</h2>
           <Input
             onChange={(e) => setSignUpUsername(e.target.value)}
             className="Login-input"

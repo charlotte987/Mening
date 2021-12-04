@@ -35,6 +35,7 @@ router.post("/sign-up", async function (req, res, next) {
       email: req.body.emailFromFront,
       password: hash,
       token: uid2(32),
+      premium: false,
     });
 
     saveUser = await newUser.save();

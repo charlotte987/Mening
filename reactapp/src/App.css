@@ -18,6 +18,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url("./images/doodle.svg");
 }
 
 .Login-input {
@@ -33,23 +34,10 @@
   padding-bottom: 15px;
   padding-top: 15px;
   border-radius: 5%;
-  border-color: white;
-  background-color: rgba(63, 169, 255, 0.5);
+  background-color: rgba(169, 192, 255, 0.952);
   margin: 40px;
 }
 
 .Sign .Login-input {
   width: 250px;
-}
-
-.HomeThemes {
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 20px;
-}
-
-.Card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
