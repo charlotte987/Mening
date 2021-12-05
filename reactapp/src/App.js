@@ -5,7 +5,7 @@ import Home from "./pages";
 import About from "./pages/about";
 import Pricing from "./pages/pricing";
 // import SignUp from "./pages/signup";
-import ScreenHome from "./pages/ScreenHome";
+import Login from "./pages/login";
 
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
@@ -22,7 +22,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/sign-up" element={<ScreenHome />} />
+          <Route path="/sign-up" element={<Login />} />
         </Routes>
       </Router>
     </Provider>

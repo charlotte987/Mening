@@ -4,7 +4,7 @@ import { Input, Button } from "antd";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
-function ScreenHome(props) {
+function Login(props) {
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
@@ -90,7 +90,6 @@ function ScreenHome(props) {
             style={{
               width: "80px",
             }}
-            // type="primary"
           >
             Sign-in
           </Button>
@@ -142,4 +141,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(ScreenHome);
+export default connect(null, mapDispatchToProps)(Login);
