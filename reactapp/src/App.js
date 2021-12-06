@@ -6,6 +6,7 @@ import About from "./pages/about";
 import Pricing from "./pages/pricing";
 // import SignUp from "./pages/signup";
 import Login from "./pages/login";
+import Board from "./pages/board";
 
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/sign-up" element={<Login />} />
+          <Route path="/board" element={<Board />} />
         </Routes>
       </Router>
     </Provider>
