@@ -9,8 +9,11 @@ import {
   Btn,
   DivTitle,
   featureDiv,
+  Feature,
+  Line,
 } from "../styles/StyledContent";
 import Navbar from "../components/Navbar";
+
 import "antd/dist/antd.css";
 import { Card, Col, Row } from "antd";
 
@@ -60,12 +63,11 @@ const Home = () => {
             </Row>
           </div>
           <div className="site-card-wrapper">
-            <Row gutter={16}>
+            <Line gutter={16}>
               <Col span={8}>
                 <Card title="Mobile-friendly 📲" bordered={true}>
-                  Mening was built to work on all devices. Your board is
-                  mobile-friendly from the ground up so you can browse feedback
-                  on the go..
+                  Your board is mobile-friendly from the ground up so you can
+                  browse feedback on the go..
                 </Card>
               </Col>
               <Col span={8}>
@@ -73,7 +75,12 @@ const Home = () => {
                   Let users change their photo and personal information.
                 </Card>
               </Col>
-            </Row>
+              <Col span={8}>
+                <Feature title="And more ! ❤️" bordered={false}>
+                  We look forward to your recommendations for future features.
+                </Feature>
+              </Col>
+            </Line>
           </div>
         </featureDiv>
       </div>
