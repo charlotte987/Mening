@@ -8,8 +8,9 @@ import {
   SettingFilled,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
+import { connect } from "react-redux";
 
-const Board = () => {
+const Board = (props) => {
   // Tableau d'idées//
   const data = [
     {
@@ -94,7 +95,7 @@ const Board = () => {
             fontWeight: "bold",
           }}
         >
-          Titre de l'idée
+          {props.infos.title}
         </h1>{" "}
         {/* Setting et bouton suggérer */}
         <div
@@ -130,7 +131,7 @@ const Board = () => {
           fontWeight: "lighter",
         }}
       >
-        Description de l'idée
+        {props.infos.desc}
       </h2>
       {/* 
 
@@ -163,9 +164,9 @@ const Board = () => {
             ]}
           >
             <List.Item.Meta
-              author={<a>Han Solo</a>}
+              author="Han Solo"
               avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title={<a href="https://ant.design">{item.title}</a>}
+              title="Titre de l'idée"
               description="Ant Design, a design language for background applications, is refined by Ant UED Team"
             ></List.Item.Meta>
           </List.Item>
@@ -175,4 +176,8 @@ const Board = () => {
   );
 };
 
-export default Board;
+function mapStateToProps(state) {
+  return { infos: state.infos };
+}
+
+export default connect(mapStateToProps, null)(Board);

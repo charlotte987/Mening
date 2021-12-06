@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Switch } from "antd";
 import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
+import { connect } from "react-redux";
 //import Navbar from "../components/Navbar";
 
 const { TextArea } = Input;
 
-const BoardCreation = () => {
+const BoardCreation = (props) => {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
   return (
     <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
       <Form
@@ -25,7 +28,11 @@ const BoardCreation = () => {
           <h6 style={{ color: "grey", fontSize: "20px" }}>
             You can change it later
           </h6>
-          <Input style={{ width: "500px" }} />
+          <Input
+            style={{ width: "500px" }}
+            name="boardTitle"
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </Form.Item>
 
         <Form.Item name="descBoard">
@@ -33,7 +40,11 @@ const BoardCreation = () => {
           <h6 style={{ color: "grey", fontSize: "20px" }}>
             Up to 80 charactères
           </h6>
-          <TextArea style={{ width: "750px" }} />
+          <TextArea
+            style={{ width: "750px" }}
+            name="boardDesc"
+            onChange={(e) => setDesc(e.target.value)}
+          />
         </Form.Item>
         <Form.Item
           label="Premium"
@@ -47,6 +58,7 @@ const BoardCreation = () => {
             cursor: "pointer",
             paddingLeft: "200px",
           }}
+          onClick={() => props.onSubmitTitle(title, desc)}
         >
           <BtnLink to="/board">Create</BtnLink>
         </Btn>
@@ -55,4 +67,12 @@ const BoardCreation = () => {
   );
 };
 
-export default BoardCreation;
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmitTitle: function (title, desc) {
+      dispatch({ type: "saveInfos", title, desc });
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(BoardCreation);
