@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { HeroDiv, Subtitle, PageTitle } from "../styles/StyledContent";
+import { Subtitle, PageTitle } from "../styles/StyledContent";
 import Navbar from "../components/Navbar";
 
 const Pricing = () => {
