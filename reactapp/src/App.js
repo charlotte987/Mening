@@ -12,10 +12,10 @@ import Board from "./pages/board";
 
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
-
+import infos from "./reducers/infos";
 import token from "./reducers/token";
 
-const store = createStore(combineReducers({ token }));
+const store = createStore(combineReducers({ token, infos }));
 
 function App() {
   return (
