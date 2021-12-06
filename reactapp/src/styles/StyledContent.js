@@ -49,7 +49,6 @@ export const Subtitle = styled.p`
 export const HeroImage = styled.img`
   width: 100%;
   height: auto;
-  // border: 1px solid grey;
   border-radius: 5px;
   max-width: 500px;
 `;
@@ -83,4 +82,10 @@ export const BtnLink = styled(Link)`
     background: #e7d9ff;
     color: #010606;
   }
+`;
+
+export const featureDiv = styled.div`
+  justify-content: center;
+  align-items: center;
+  display: flex;
 `;
