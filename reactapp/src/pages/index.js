@@ -1,12 +1,14 @@
 import React from "react";
 import {
-  Div,
+  HeroDiv,
   HeroImage,
   Subtitle,
   HeroLeft,
   Title,
   BtnLink,
   Btn,
+  DivTitle,
+  PageTitle,
 } from "../styles/StyledContent";
 import Navbar from "../components/Navbar";
 
@@ -14,7 +16,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <Div>
+      <HeroDiv>
         <HeroLeft>
           <Title>Build it together</Title>
           <Subtitle>
@@ -27,10 +29,10 @@ const Home = () => {
         </HeroLeft>
 
         <HeroImage src={require("../images/build-together.jpg")} alt="logo" />
-      </Div>
-      <Div>
-        <Title>Features</Title>
-      </Div>
+      </HeroDiv>
+      <div>
+        <DivTitle>Features</DivTitle>
+      </div>
     </>
   );
 };

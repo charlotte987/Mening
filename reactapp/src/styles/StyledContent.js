@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 import { devices } from "./devices";
 
-export const Div = styled.div`
+export const HeroDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,6 +27,15 @@ export const HeroLeft = styled.div`
   }
 `;
 
+export const DivTitle = styled.h1`
+  color: #000000;
+  padding-top: 3%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 30vh;
+`;
+
 export const Title = styled.h1`
   color: #000000;
   padding-top: 3%;
@@ -49,7 +58,7 @@ export const PageTitle = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  margin-top: 10vh;
 `;
 
 export const Btn = styled.nav`
