@@ -1,12 +1,13 @@
 import React from "react";
 import { Form, Input, Switch } from "antd";
-import TextArea from "rc-textarea";
 import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
-// import Navbar from "../components/Navbar";
+//import Navbar from "../components/Navbar";
+
+const { TextArea } = Input;
 
 const BoardCreation = () => {
   return (
-    <HeroDiv style={{ padding: "260px" }}>
+    <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
       <Form
         name="basic"
         labelCol={{
@@ -18,34 +19,21 @@ const BoardCreation = () => {
         initialValues={{
           remember: true,
         }}
-        style={{ paddingRight: "100px" }}
       >
-        <Form.Item
-          label="Choose a board name"
-          name="boardName"
-          style={{
-            fontWeight: "bold",
-            display: "block",
-            width: "200%",
-            fontSize: "25px",
-          }}
-        >
-          <h6 style={{ color: "grey" }}>You can change it later</h6>
-          <Input style={{ width: "125%" }} />
+        <Form.Item name="boardName">
+          <h1 style={{ fontSize: "30px" }}>Choose a bord name</h1>
+          <h6 style={{ color: "grey", fontSize: "20px" }}>
+            You can change it later
+          </h6>
+          <Input style={{ width: "500px" }} />
         </Form.Item>
 
-        <Form.Item
-          label="A quick description ?"
-          name="descBoard"
-          style={{
-            fontWeight: "bold",
-            display: "block",
-            width: "200%",
-            fontSize: "25px",
-          }}
-        >
-          <h6 style={{ color: "grey" }}>Up to 80 charactères</h6>
-          <TextArea style={{ width: "125%" }} />
+        <Form.Item name="descBoard">
+          <h1 style={{ fontSize: "30px" }}>A quick description ?</h1>
+          <h6 style={{ color: "grey", fontSize: "20px" }}>
+            Up to 80 charactères
+          </h6>
+          <TextArea style={{ width: "750px" }} />
         </Form.Item>
         <Form.Item
           label="Premium"
@@ -57,7 +45,7 @@ const BoardCreation = () => {
         <Btn
           style={{
             cursor: "pointer",
-            paddingLeft: "180px",
+            paddingLeft: "200px",
           }}
         >
           <BtnLink to="/board">Create</BtnLink>

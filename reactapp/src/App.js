@@ -8,7 +8,6 @@ import Pricing from "./pages/pricing";
 import Login from "./pages/login";
 import BoardCreation from "./pages/boardcreation";
 import IdeaCreation from "./pages/ideacreation";
-import Idea from "./pages/idea";
 
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
@@ -28,7 +27,6 @@ function App() {
           <Route path="/sign-up" element={<Login />} />
           <Route path="/board-creation" element={<BoardCreation />} />
           <Route path="/idea-creation" element={<IdeaCreation />} />
-          <Route path="/idea" element={<Idea />} />
         </Routes>
       </Router>
     </Provider>
