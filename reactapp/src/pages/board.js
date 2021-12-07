@@ -8,6 +8,7 @@ import {
   SettingFilled,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
+import { PromiseProvider } from "mongoose";
 import { connect } from "react-redux";
 
 const Board = (props) => {
@@ -164,10 +165,10 @@ const Board = (props) => {
             ]}
           >
             <List.Item.Meta
-              author="Han Solo"
+              author={"Han Solo"}
               avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Titre de l'idée"
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+              title={props.AddIdeaContent.idea}
+              description={props.AddIdeaContent.ideaDescription}
             ></List.Item.Meta>
           </List.Item>
         )}
@@ -177,7 +178,7 @@ const Board = (props) => {
 };
 
 function mapStateToProps(state) {
-  return { infos: state.infos };
+  return { infos: state.infos, AddIdeaContent: state.IdeaContent };
 }
 
 export default connect(mapStateToProps, null)(Board);
