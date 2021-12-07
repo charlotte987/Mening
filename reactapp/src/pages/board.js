@@ -167,8 +167,8 @@ const Board = (props) => {
             <List.Item.Meta
               author={"Han Solo"}
               avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title={props.AddIdeaContent.idea}
-              description={props.AddIdeaContent.ideaDescription}
+              title={props.IdeaContent.idea}
+              description={props.IdeaContent.ideaDescription}
             ></List.Item.Meta>
           </List.Item>
         )}
@@ -178,7 +178,7 @@ const Board = (props) => {
 };
 
 function mapStateToProps(state) {
-  return { infos: state.infos, AddIdeaContent: state.IdeaContent };
+  return { infos: state.infos, IdeaContent: state.IdeaContent };
 }
 
 export default connect(mapStateToProps, null)(Board);

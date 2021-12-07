@@ -66,7 +66,8 @@ function mapDispatchToProps(dispatch) {
     onAddIdeaClick: function (idea, ideaDescription) {
       dispatch({
         type: "AddIdea",
-        IdeaContent: { idea, ideaDescription },
+        idea,
+        ideaDescription,
       });
     },
   };
