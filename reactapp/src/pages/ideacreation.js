@@ -26,25 +26,24 @@ const IdeaCreation = (props) => {
         }}
       >
         <Form.Item name="ideaName">
-          <h1
-            style={{ fontSize: "30px" }}
-            onChange={(e) => setIdea(e.target.value)}
-          >
-            Nom de l'idée
-          </h1>
+          <h1 style={{ fontSize: "30px" }}>Nom de l'idée</h1>
 
-          <Input style={{ width: "500px" }} />
+          <Input
+            style={{ width: "500px" }}
+            onChange={(e) => {
+              setIdea(e.target.value);
+              console.log("onchange", idea);
+            }}
+          />
         </Form.Item>
 
         <Form.Item name="descIdea">
-          <h1
-            style={{ fontSize: "30px" }}
-            onChange={(e) => setIdeaDescription(e.target.value)}
-          >
-            Description de l'idée
-          </h1>
+          <h1 style={{ fontSize: "30px" }}>Description de l'idée</h1>
 
-          <TextArea style={{ width: "750px" }} />
+          <TextArea
+            style={{ width: "750px" }}
+            onChange={(e) => setIdeaDescription(e.target.value)}
+          />
         </Form.Item>
 
         <Btn
@@ -64,10 +63,11 @@ const IdeaCreation = (props) => {
 function mapDispatchToProps(dispatch) {
   return {
     onAddIdeaClick: function (idea, ideaDescription) {
+      console.log(idea, "test1");
       dispatch({
-        type: "AddIdea",
-        idea,
-        ideaDescription,
+        type: "addIdea",
+        idea: idea,
+        ideaDescription: ideaDescription,
       });
     },
   };
