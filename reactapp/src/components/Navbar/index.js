@@ -28,7 +28,7 @@ const Navbar = () => {
           </NavLink>
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="/board-creation">Create a board</NavBtnLink>
+          <NavBtnLink to="/create">Create a board</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

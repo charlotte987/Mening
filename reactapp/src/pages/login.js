@@ -52,7 +52,7 @@ function Login(props) {
   };
 
   if (userExists) {
-    return <Navigate to="/screensource" />;
+    return <Navigate to="/" />;
   }
 
   var tabErrorsSignin = listErrorsSignin.map((error, i) => {

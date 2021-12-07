@@ -9,6 +9,18 @@ const { TextArea } = Input;
 const BoardCreation = (props) => {
   const [title, setTitle] = useState(""); //enregistrement du titre du board dans le store
   const [desc, setDesc] = useState(""); //enregistrement de la description du board dans le store
+  const [descDB, setDescDB] = useState("");
+  const [titleDB, setTitleDB] = useState("");
+
+  var saveBoard = async () => {
+    props.onSubmitTitle(title, desc);
+
+    var save = await fetch("/board-creation", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `title=${titleDB}&desc=${descDB}&token=${props.token}`,
+    });
+  };
   return (
     <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
       <Form
@@ -31,7 +43,7 @@ const BoardCreation = (props) => {
           <Input
             style={{ width: "500px" }}
             name="boardTitle"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitleDB(e.target.value)}
           />
         </Form.Item>
 
@@ -43,7 +55,7 @@ const BoardCreation = (props) => {
           <TextArea
             style={{ width: "750px" }}
             name="boardDesc"
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(e) => setDescDB(e.target.value)}
           />
         </Form.Item>
         <Form.Item
@@ -58,7 +70,7 @@ const BoardCreation = (props) => {
             cursor: "pointer",
             paddingLeft: "200px",
           }}
-          onClick={() => props.onSubmitTitle(title, desc)}
+          onClick={() => saveBoard()}
         >
           <BtnLink to="/board">Create</BtnLink>
         </Btn>
@@ -70,10 +82,13 @@ const BoardCreation = (props) => {
 function mapDispatchToProps(dispatch) {
   return {
     onSubmitTitle: function (title, desc) {
-      console.log(title, "test2");
       dispatch({ type: "saveInfos", title, desc });
     },
   };
 }
 
-export default connect(null, mapDispatchToProps)(BoardCreation);
+function mapStateToProps(state) {
+  return { token: state.token };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BoardCreation);

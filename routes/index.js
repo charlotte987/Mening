@@ -5,6 +5,8 @@ var uid2 = require("uid2");
 var bcrypt = require("bcrypt");
 
 var userModel = require("../models/users");
+var boardModel = require("../models/board");
+var ideaModel = require("../models/ideas");
 
 router.post("/sign-up", async function (req, res, next) {
   var error = [];
@@ -78,6 +80,26 @@ router.post("/sign-in", async function (req, res, next) {
   }
 
   res.json({ result, user, error, token });
+});
+
+router.post("/board-creation", async function (req, res, next) {
+  var result = false;
+  var user = await userModel.findOne({ token: req.body.token });
+
+  if (user != null) {
+    var newBoard = new boardModel({
+      boardName: req.body.title,
+      boardDesc: req.body.desc,
+      userId: user._id,
+    });
+  }
+  console.log(newBoard);
+  var saveBoard = await newBoard.save();
+  if (saveBoard.title) {
+    result = true;
+  }
+
+  res.json({ result });
 });
 
 module.exports = router;
