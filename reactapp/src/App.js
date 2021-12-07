@@ -10,6 +10,7 @@ import BoardCreation from "./pages/boardcreation";
 import IdeaCreation from "./pages/ideacreation";
 import Board from "./pages/board";
 import Account from "./pages/Account";
+import AccountSettings from "./pages/AccountSettings";
 
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/idea-creation" element={<IdeaCreation />} />
           <Route path="/board" element={<Board />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/account-settings" element={<AccountSettings />} />
         </Routes>
       </Router>
     </Provider>
