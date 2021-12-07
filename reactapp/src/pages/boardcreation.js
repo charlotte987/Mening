@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 const { TextArea } = Input;
 
 const BoardCreation = (props) => {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [title, setTitle] = useState(""); //enregistrement du titre du board dans le store
+  const [desc, setDesc] = useState(""); //enregistrement de la description du board dans le store
   return (
     <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
       <Form
