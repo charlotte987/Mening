@@ -8,8 +8,10 @@ import {
   SettingFilled,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
+import { PromiseProvider } from "mongoose";
+import { connect } from "react-redux";
 
-const Board = () => {
+const Board = (props) => {
   // Tableau d'idées//
   const data = [
     {
@@ -163,10 +165,10 @@ const Board = () => {
             ]}
           >
             <List.Item.Meta
-              author={<a>Han Solo</a>}
+              author={"Han Solo"}
               avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title={<a href="https://ant.design">{item.title}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+              title={props.AddIdeaContent}
+              description={props.AddIdeaContent}
             ></List.Item.Meta>
           </List.Item>
         )}
@@ -175,4 +177,8 @@ const Board = () => {
   );
 };
 
-export default Board;
+function mapStateToProps(state) {
+  return { AddIdeaContent: state.IdeaContent };
+}
+
+export default connect(mapStateToProps, null)(Board);
