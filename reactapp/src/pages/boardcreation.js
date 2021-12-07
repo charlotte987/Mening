@@ -9,16 +9,14 @@ const { TextArea } = Input;
 const BoardCreation = (props) => {
   const [title, setTitle] = useState(""); //enregistrement du titre du board dans le store
   const [desc, setDesc] = useState(""); //enregistrement de la description du board dans le store
-  const [descDB, setDescDB] = useState("");
-  const [titleDB, setTitleDB] = useState("");
 
-  var saveBoard = async () => {
+  var saveBoard = async (title, desc) => {
     props.onSubmitTitle(title, desc);
-
+    console.log(props.token);
     var save = await fetch("/board-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `title=${titleDB}&desc=${descDB}&token=${props.token}`,
+      body: `title=${title}&desc=${desc}&token=${props.token}`,
     });
   };
   return (
@@ -43,7 +41,7 @@ const BoardCreation = (props) => {
           <Input
             style={{ width: "500px" }}
             name="boardTitle"
-            onChange={(e) => setTitleDB(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </Form.Item>
 
@@ -55,7 +53,7 @@ const BoardCreation = (props) => {
           <TextArea
             style={{ width: "750px" }}
             name="boardDesc"
-            onChange={(e) => setDescDB(e.target.value)}
+            onChange={(e) => setDesc(e.target.value)}
           />
         </Form.Item>
         <Form.Item
@@ -70,7 +68,7 @@ const BoardCreation = (props) => {
             cursor: "pointer",
             paddingLeft: "200px",
           }}
-          onClick={() => saveBoard()}
+          onClick={() => saveBoard(title, desc)}
         >
           <BtnLink to="/board">Create</BtnLink>
         </Btn>
