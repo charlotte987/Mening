@@ -1,6 +1,6 @@
 export default function (IdeaContent = "", action) {
   if (action.type == "AddIdea") {
-    return action.IdeaContent;
+    return { idea: action.idea, ideaDescription: action.ideaDescription };
   } else {
     return IdeaContent;
   }
