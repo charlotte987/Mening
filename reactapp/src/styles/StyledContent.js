@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 import { devices } from "./devices";
-import { Card, Row, Divider } from "antd";
+import { Card, Row } from "antd";
 
 export const HeroDiv = styled.div`
   display: flex;
