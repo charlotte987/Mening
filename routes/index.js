@@ -102,4 +102,24 @@ router.post("/board-creation", async function (req, res, next) {
   res.json({ result });
 });
 
+router.post("/idea-creation", async function (req, res, next) {
+  var result = false;
+  var user = await userModel.findOne({ token: req.body.token });
+
+  if (user != null) {
+    var newIdea = new ideaModel({
+      ideaName: req.body.idea,
+      ideaDesc: req.body.ideaDesc,
+      userId: user._id,
+    });
+  }
+  console.log(newIdea);
+  var saveIdea = await newIdea.save();
+  if (saveIdea.ideaName) {
+    result = true;
+  }
+
+  res.json({ result });
+});
+
 module.exports = router;

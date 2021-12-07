@@ -8,8 +8,18 @@ import { connect } from "react-redux";
 const { TextArea } = Input;
 
 const IdeaCreation = (props) => {
-  const [idea, setIdea] = useState("");
-  const [ideaDescription, setIdeaDescription] = useState("");
+  const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
+  const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
+
+  var saveIdea = async (idea, ideaDescription) => {
+    props.onAddIdeaClick(idea, ideaDescription);
+    console.log(props.token);
+    var save = await fetch("/idea-creation", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}`,
+    });
+  };
 
   return (
     <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
@@ -47,7 +57,7 @@ const IdeaCreation = (props) => {
         </Form.Item>
 
         <Btn
-          onClick={() => props.onAddIdeaClick(idea, ideaDescription)}
+          onClick={() => saveIdea(idea, ideaDescription)}
           style={{
             cursor: "pointer",
             paddingLeft: "200px",
@@ -63,7 +73,6 @@ const IdeaCreation = (props) => {
 function mapDispatchToProps(dispatch) {
   return {
     onAddIdeaClick: function (idea, ideaDescription) {
-      console.log(idea, "test1");
       dispatch({
         type: "addIdea",
         idea: idea,
@@ -73,4 +82,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(IdeaCreation);
+function mapStateToProps(state) {
+  return { token: state.token };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IdeaCreation);
