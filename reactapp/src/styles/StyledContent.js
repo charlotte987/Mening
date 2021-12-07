@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 import { devices } from "./devices";
+import { Card, Row } from "antd";
 
 export const HeroDiv = styled.div`
   display: flex;
@@ -84,8 +85,18 @@ export const BtnLink = styled(Link)`
   }
 `;
 
-export const featureDiv = styled.div`
+export const featureDiv = styled.div``;
+
+// Ant-Design
+
+export const Feature = styled(Card)`
+  box-shadow: 0.5px 0.5px 1px 1px #8247e5;
+  border-radius: 10px;
+  border-color: #8247e5;
+`;
+
+export const Line = styled(Row)`
+  display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
 `;
