@@ -1,17 +1,19 @@
-import React, { createElement, useState } from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { List, Avatar, Space, Button } from "antd";
 import {
   MessageOutlined,
   LikeOutlined,
-  StarOutlined,
   SettingFilled,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
+import { PromiseProvider } from "mongoose";
 import { connect } from "react-redux";
 
 const Board = (props) => {
   // Tableau d'idées//
+
+  const [ideaExist, setIdeaExist] = useState(false);
   const data = [
     {
       title: "Ant Design Title 1",
@@ -26,42 +28,6 @@ const Board = (props) => {
       title: "Ant Design Title 4",
     },
   ];
-
-  //Compteur de like et dislike//
-
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
-  const [action, setAction] = useState(null);
-
-  const like = () => {
-    setLikes(1);
-    setDislikes(0);
-    setAction("liked");
-  };
-
-  const dislike = () => {
-    setLikes(0);
-    setDislikes(1);
-    setAction("disliked");
-  };
-
-  //fonction de like et dislike//
-  //   const actions = [
-  //     <Tooltip key="comment-basic-like" title="Like">
-  //       <span onClick={like}>
-  //         {createElement(action === "liked" ? LikeFilled : LikeOutlined)}
-  //         <span className="comment-action">{likes}</span>
-  //       </span>
-  //     </Tooltip>,
-  //     <Tooltip key="comment-basic-dislike" title="Dislike">
-  //       <span onClick={dislike}>
-  //         {React.createElement(
-  //           action === "disliked" ? DislikeFilled : DislikeOutlined
-  //         )}
-  //         <span className="comment-action">{dislikes}</span>
-  //       </span>
-  //     </Tooltip>,
-  //   ];
 
   const IconText = ({ icon, text }) => (
     <Space>
@@ -163,12 +129,16 @@ const Board = (props) => {
               />,
             ]}
           >
-            <List.Item.Meta
-              author="Han Solo"
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Titre de l'idée"
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            ></List.Item.Meta>
+            {!props.ideaContent ? (
+              setIdeaExist(false)
+            ) : (
+              <List.Item.Meta
+                author={"Han Solo"}
+                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                title={props.ideaContent.idea}
+                description={props.ideaContent.ideaDescription}
+              ></List.Item.Meta>
+            )}
           </List.Item>
         )}
       />
@@ -177,7 +147,7 @@ const Board = (props) => {
 };
 
 function mapStateToProps(state) {
-  return { infos: state.infos };
+  return { infos: state.infos, ideaContent: state.ideaContent };
 }
 
 export default connect(mapStateToProps, null)(Board);

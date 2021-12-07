@@ -70,6 +70,7 @@ const BoardCreation = (props) => {
 function mapDispatchToProps(dispatch) {
   return {
     onSubmitTitle: function (title, desc) {
+      console.log(title, "test2");
       dispatch({ type: "saveInfos", title, desc });
     },
   };

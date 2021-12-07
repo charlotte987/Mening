@@ -9,10 +9,13 @@ import {
   Btn,
   DivTitle,
   featureDiv,
+  Feature,
+  Line,
 } from "../styles/StyledContent";
 import Navbar from "../components/Navbar";
+
 import "antd/dist/antd.css";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row, Divider } from "antd";
 
 const Home = () => {
   return (
@@ -35,7 +38,7 @@ const Home = () => {
 
       <div>
         <DivTitle>Features</DivTitle>
-        <featureDiv>
+        <div style={{ padding: "1% 10%" }}>
           <div className="site-card-wrapper">
             <Row gutter={16}>
               <Col span={8}>
@@ -60,12 +63,11 @@ const Home = () => {
             </Row>
           </div>
           <div className="site-card-wrapper">
-            <Row gutter={16}>
+            <Line gutter={16}>
               <Col span={8}>
                 <Card title="Mobile-friendly 📲" bordered={true}>
-                  Mening was built to work on all devices. Your board is
-                  mobile-friendly from the ground up so you can browse feedback
-                  on the go..
+                  Your board is mobile-friendly from the ground up so you can
+                  browse feedback on the go..
                 </Card>
               </Col>
               <Col span={8}>
@@ -73,13 +75,56 @@ const Home = () => {
                   Let users change their photo and personal information.
                 </Card>
               </Col>
-            </Row>
+              <Col span={8}>
+                <Feature title="And more ! ❤️" bordered={false}>
+                  We look forward to your recommendations for future features.
+                </Feature>
+              </Col>
+            </Line>
           </div>
-        </featureDiv>
+        </div>
       </div>
 
       <div>
-        <DivTitle>Avis</DivTitle>
+        <DivTitle>Reviews</DivTitle>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            display: "flex",
+            paddingLeft: "30%",
+            paddingRight: "30%",
+          }}
+        >
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+              merninisti licere mihi ista probare, quae sunt a te dicta? Refert
+              tamen, quo modo.
+            </p>
+            <Divider orientation="left">
+              Antoine - Program Manager à La Capsule
+            </Divider>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+              merninisti licere mihi ista probare, quae sunt a te dicta? Refert
+              tamen, quo modo.
+            </p>
+            <Divider orientation="right">Laurent - CEO des kebabs</Divider>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+              merninisti licere mihi ista probare, quae sunt a te dicta? Refert
+              tamen, quo modo.
+            </p>
+            <Divider orientation="left">Amalia - TripBook's CEO</Divider>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
+              merninisti licere mihi ista probare, quae sunt a te dicta? Refert
+              tamen, quo modo.
+            </p>
+            <Divider orientation="right">Michael - Krier's CEO</Divider>
+          </div>
+        </div>
       </div>
     </>
   );
