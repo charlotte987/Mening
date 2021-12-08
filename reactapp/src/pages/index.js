@@ -23,7 +23,7 @@ const Home = () => {
       <Navbar />
       <HeroDiv>
         <HeroLeft>
-          <Title>Build it together</Title>
+          <Title>For your users, by your users</Title>
           <Subtitle>
             Mening is the easiest and most affordable tool to collect ideas from
             your users.
@@ -33,10 +33,10 @@ const Home = () => {
           </Btn>
         </HeroLeft>
 
-        <HeroImage src={require("../images/build-together.jpg")} alt="logo" />
+        <HeroImage src={require("../images/idea.svg")} alt="logo" />
       </HeroDiv>
 
-      <div>
+      <div style={{ backgroundColor: "#F6F6F6", paddingBottom: "70px" }}>
         <DivTitle>Features</DivTitle>
         <div style={{ padding: "1% 10%" }}>
           <div className="site-card-wrapper">
