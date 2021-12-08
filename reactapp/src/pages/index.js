@@ -8,7 +8,6 @@ import {
   BtnLink,
   Btn,
   DivTitle,
-  featureDiv,
   Feature,
   Line,
 } from "../styles/StyledContent";

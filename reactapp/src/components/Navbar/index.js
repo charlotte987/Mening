@@ -8,7 +8,9 @@ import {
   NavBtnLink,
 } from "../../styles/StyledNavbar";
 
-const Navbar = () => {
+import { connect } from "react-redux";
+
+const Navbar = (props) => {
   return (
     <>
       <Nav>
@@ -23,9 +25,15 @@ const Navbar = () => {
           <NavLink to="/pricing" activeStyle>
             Pricing
           </NavLink>
-          <NavLink to="/sign-up" activeStyle>
-            Login
-          </NavLink>
+          {props.isLoggedIn ? (
+            <NavLink to="/account" activeStyle>
+              Account
+            </NavLink>
+          ) : (
+            <NavLink to="/sign-up" activeStyle>
+              Login
+            </NavLink>
+          )}
         </NavMenu>
         <NavBtn>
           <NavBtnLink to="/create">Create a board</NavBtnLink>
@@ -35,4 +43,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+function mapStateToProps(state) {
+  return { isLoggedIn: state.isLoggedIn };
+}
+
+export default connect(mapStateToProps, null)(Navbar);
