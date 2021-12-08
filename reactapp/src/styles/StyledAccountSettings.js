@@ -7,22 +7,34 @@ export const Body = styled.body`
 export const Div = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 20vh;
-  padding-bottom: 20vh;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
 `;
 
 export const Profile = styled.div`
   display: flex;
   justify-content: center;
-  box-shadow: 0.8px 0.8px 0.8px 0.8px #cccccc;
+  box-shadow: 1px 1px 1px 1px #cccccc;
   border-color: #f6f6f6;
   border-radius: 5px;
   width: 300px;
-  height: 80vh;
+  height: 70vh;
+  border-color: #f6f6f6;
 `;
 
 export const Photo = styled.img`
-  width: 50px;
+  width: 100px;
   height: 50px;
-  position: relative;
+  border-radius: 10px;
+`;
+
+export const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 8vh;
+`;
+
+export const Input = styled.input`
+  border-width: 0.3px;
+  border-radius: 3px;
 `;

@@ -1,16 +1,52 @@
 import React from "react";
 import "../App.css";
-import { Profile, Div, Body, Photo } from "../styles/StyledAccountSettings";
+import {
+  Profile,
+  Div,
+  Body,
+  Photo,
+  List,
+  Input,
+} from "../styles/StyledAccountSettings";
 
 const AccountSettings = () => {
   return (
     <Body>
       <Div>
         <Profile>
-          <div style={{ paddingTop: "30px" }}>
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "30% 30%",
+            }}
+          >
             <Photo src="https://joeschmoe.io/api/v1/random" />
-            <h4>Name</h4>
-            <h4>Email address</h4>
+            <List>
+              <div>
+                <label for="name">Username</label>
+                <Input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="6"
+                  maxlength="20"
+                  size="10"
+                ></Input>
+              </div>
+              <div>
+                <label for="email">Email Address</label>
+                <Input
+                  type="text"
+                  id="email"
+                  name="email"
+                  required
+                  minlength="6"
+                  maxlength="20"
+                  size="10"
+                ></Input>
+              </div>
+            </List>
           </div>
         </Profile>
       </Div>

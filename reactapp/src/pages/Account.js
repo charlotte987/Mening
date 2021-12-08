@@ -8,6 +8,7 @@ import {
   PlusOutlined,
   SettingOutlined,
   ContainerOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 
 const { Meta } = Card;
@@ -39,6 +40,9 @@ const Account = () => {
               <PlusOutlined key="create" />
             </Link>,
             <ContainerOutlined key="board" onClick={showModal} />,
+            <Link to="/">
+              <LogoutOutlined key="logout" />
+            </Link>,
           ]}
         >
           <Modal
