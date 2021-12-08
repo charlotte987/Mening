@@ -43,7 +43,7 @@ const Board = (props) => {
         <img
           src={require("../images/julian.jpg")}
           className="avatar"
-          alt="profile picture"
+          alt="profile"
         ></img>
       </div>
 
