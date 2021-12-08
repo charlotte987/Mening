@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, Input, Switch } from "antd";
 import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
-//import Navbar from "../components/Navbar";
 
 const { TextArea } = Input;
 

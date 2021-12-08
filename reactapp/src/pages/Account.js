@@ -11,9 +11,11 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 
+import { connect } from "react-redux";
+
 const { Meta } = Card;
 
-const Account = () => {
+const Account = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -28,6 +30,10 @@ const Account = () => {
     setIsModalVisible(false);
   };
 
+  const logout = () => {
+    props.setIsLoggedOut();
+  };
+
   return (
     <Body>
       <Div>
@@ -40,8 +46,9 @@ const Account = () => {
               <PlusOutlined key="create" />
             </Link>,
             <ContainerOutlined key="board" onClick={showModal} />,
+
             <Link to="/">
-              <LogoutOutlined key="logout" />
+              <LogoutOutlined key="logout" onClick={logout} />
             </Link>,
           ]}
         >
@@ -68,4 +75,15 @@ const Account = () => {
   );
 };
 
-export default Account;
+function mapDispatchToProps(dispatch) {
+  return {
+    // addToken: function (token) {
+    //   dispatch({ type: "addToken", token: token });
+    // },
+    setIsLoggedOut: function () {
+      dispatch({ type: "setIsLoggedOut" });
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Account);
