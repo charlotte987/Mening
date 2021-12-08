@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { Profile, Div, Body, BoardList } from "../styles/StyledAccount";
+import { Profile, Div, Body, Input } from "../styles/StyledAccount";
 
-import { Card, Avatar, Modal } from "antd";
+import { Card, Avatar, Modal, Button } from "antd";
 import {
   PlusOutlined,
   SettingOutlined,
@@ -17,17 +17,35 @@ const { Meta } = Card;
 
 const Account = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible2, setIsModalVisible2] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const state = {
+    loading: false,
+  };
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
+  const showModal2 = () => {
+    setIsModalVisible2(true);
+  };
+
   const handleOk = () => {
-    setIsModalVisible(false);
+    setIsModalVisible2(false);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const handleCancel2 = () => {
+    setIsModalVisible2(false);
   };
 
   const logout = () => {
@@ -39,9 +57,7 @@ const Account = (props) => {
       <Div>
         <Profile
           actions={[
-            <Link to="/account-settings">
-              <SettingOutlined key="setting" />
-            </Link>,
+            <SettingOutlined key="setting" onClick={showModal2} />,
             <Link to="/board-creation">
               <PlusOutlined key="create" />
             </Link>,
@@ -53,16 +69,64 @@ const Account = (props) => {
           ]}
         >
           <Modal
-            title="Boards"
             visible={isModalVisible}
-            onOk={handleOk}
+            title="Boards"
             onCancel={handleCancel}
+            footer={[
+              <Button key="back" onClick={handleCancel}>
+                Close
+              </Button>,
+            ]}
           >
-            <BoardList>
-              <Link to="/board">Some contents...</Link>
-              <Link to="/board">Some contents...</Link>
-              <Link to="/board">Some contents...</Link>
-            </BoardList>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+          </Modal>
+          <Modal
+            visible={isModalVisible2}
+            title="Settings"
+            onCancel={handleCancel2}
+            footer={[
+              <Button key="back" onClick={handleCancel2}>
+                Close
+              </Button>,
+              <Button
+                key="link"
+                href="/account"
+                type="primary"
+                loading={loading}
+                onClick={handleOk}
+              >
+                Submit
+              </Button>,
+            ]}
+          >
+            <div>
+              <label for="name">Username</label>
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                required
+                minlength="6"
+                maxlength="20"
+                size="10"
+              ></Input>
+            </div>
+            <div>
+              <label for="email">Email Address</label>
+              <Input
+                type="text"
+                id="email"
+                name="email"
+                required
+                minlength="6"
+                maxlength="20"
+                size="10"
+              ></Input>
+            </div>
           </Modal>
           <Meta
             avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
