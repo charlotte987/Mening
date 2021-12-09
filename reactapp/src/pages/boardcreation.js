@@ -16,7 +16,7 @@ const BoardCreation = (props) => {
       body: `title=${title}&desc=${desc}&token=${props.token}`,
     });
     var response = await save.json();
-    props.onSubmitTitle(title, desc, response.saveBoard._id);
+    props.onSubmitTitle(title, desc, response.saveBoard._id); //recuperation des infos du board (du backend) pour les enregistrer dans le store
     console.log(response, "tessssst");
   };
 

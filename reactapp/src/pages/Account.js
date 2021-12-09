@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { Profile, Div, Body, Input } from "../styles/StyledAccount";
@@ -9,9 +9,11 @@ import {
   SettingOutlined,
   ContainerOutlined,
   LogoutOutlined,
+  PlayCircleOutlined,
 } from "@ant-design/icons";
 
 import { connect } from "react-redux";
+import { BtnLink } from "../styles/StyledContent";
 
 const { Meta } = Card;
 
@@ -19,6 +21,19 @@ const Account = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [boardName, setBoardName] = useState([]);
+
+  useEffect(() => {
+    var findBoards = async () => {
+      var boards = await fetch(`/board/${props.token}`);
+      var body = await boards.json();
+      console.log(body);
+      setBoardName(body.boards);
+
+      console.log(body.boards, ":body.boards");
+    };
+    findBoards();
+  }, []);
 
   const state = {
     loading: false,
@@ -79,11 +94,14 @@ const Account = (props) => {
               </Button>,
             ]}
           >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            {boardName.map((board, i) => (
+              <p key={i} style={{ display: "flex", flexDirection: "row" }}>
+                <p style={{ marginRight: "20px" }}>
+                  <Link to="/board">{board.boardName}</Link>
+                </p>
+                <p>{board.boardDesc}</p>
+              </p>
+            ))}
           </Modal>
           <Modal
             visible={isModalVisible2}
@@ -153,6 +171,9 @@ function mapDispatchToProps(dispatch) {
       dispatch({ type: "setIsLoggedOut" });
     },
   };
+}
+function mapStateToProps(state) {
+  return { token: state.token, infos: state.infos };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

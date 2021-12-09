@@ -12,6 +12,7 @@ import {
   Line,
 } from "../styles/StyledContent";
 import Navbar from "../components/Navbar";
+import { connect } from "react-redux";
 
 import "antd/dist/antd.css";
 import { Card, Col, Row, Divider } from "antd";
@@ -129,4 +130,8 @@ const Home = () => {
   );
 };
 
-export default Home;
+function mapStateToProps(state) {
+  return { isLoggedIn: state.isLoggedIn };
+}
+
+export default connect(mapStateToProps, null)(Home);

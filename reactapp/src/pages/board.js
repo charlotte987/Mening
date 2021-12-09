@@ -52,6 +52,7 @@ const Board = (props) => {
             marginTop: "20px",
             marginRight: "300px",
             fontWeight: "bold",
+            width: "100%",
           }}
         >
           {props.infos.title}
@@ -64,7 +65,7 @@ const Board = (props) => {
             flexDirection: "row",
             alignItems: "center",
             width: "100%",
-            marginLeft: "100px",
+            marginLeft: "400px",
           }}
         >
           <SettingOutlined
@@ -73,6 +74,7 @@ const Board = (props) => {
               flexDirection: "row",
               alignItems: "center",
               width: "50px",
+              cursor: "pointer",
             }}
           />
           <Btn
