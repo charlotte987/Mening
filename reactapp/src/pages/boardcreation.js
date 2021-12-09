@@ -33,7 +33,7 @@ const BoardCreation = (props) => {
         }}
       >
         <Form.Item name="boardName">
-          <h1 style={{ fontSize: "30px" }}>Choose a bord name</h1>
+          <h1 style={{ fontSize: "30px" }}>Choose a board name</h1>
           <h6 style={{ color: "grey", fontSize: "20px" }}>
             You can change it later
           </h6>
