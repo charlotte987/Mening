@@ -158,10 +158,6 @@ const Account = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return { token: state.token, user: state.user };
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     // addToken: function (token) {
@@ -173,7 +169,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  return { token: state.token, infos: state.infos };
+  return { token: state.token, infos: state.infos, user: state.user };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);
