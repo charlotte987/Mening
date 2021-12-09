@@ -29,6 +29,7 @@ function Login(props) {
     if (body.result === true) {
       props.addToken(body.token);
       props.setIsLoggedIn();
+      props.userInfo(body.user);
       setUserExists(true);
     } else {
       setErrorsSignup(body.error);
@@ -47,7 +48,6 @@ function Login(props) {
     if (body.result === true) {
       props.addToken(body.token);
       props.setIsLoggedIn();
-      console.log(body.user);
       props.userInfo(body.user);
       setUserExists(true);
     } else {

@@ -26,7 +26,6 @@ const Account = (props) => {
 
   const showModal = () => {
     setIsModalVisible(true);
-    console.log(props.user.username);
   };
 
   const showModal2 = () => {
@@ -130,7 +129,11 @@ const Account = (props) => {
             </div>
           </Modal>
           <Meta
-            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+            avatar={
+              <Avatar
+                src={`https://eu.ui-avatars.com/api/?name=${props.user.username}`}
+              />
+            }
             title={`${props.user.username}`}
             description="Free Account"
           />
