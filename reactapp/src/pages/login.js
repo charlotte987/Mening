@@ -47,6 +47,8 @@ function Login(props) {
     if (body.result === true) {
       props.addToken(body.token);
       props.setIsLoggedIn();
+      console.log(body.user);
+      props.userInfo(body.user);
       setUserExists(true);
     } else {
       setErrorsSignin(body.error);
@@ -142,6 +144,9 @@ function mapDispatchToProps(dispatch) {
     },
     setIsLoggedIn: function () {
       dispatch({ type: "setIsLoggedIn" });
+    },
+    userInfo: function (user) {
+      dispatch({ type: "userInfo", user: user });
     },
   };
 }

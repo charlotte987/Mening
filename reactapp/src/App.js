@@ -18,9 +18,10 @@ import infos from "./reducers/infos";
 import token from "./reducers/token";
 import isLoggedIn from "./reducers/isLoggedIn";
 import ideaContent from "./reducers/addIdea";
+import user from "./reducers/user";
 
 const store = createStore(
-  combineReducers({ token, infos, ideaContent, isLoggedIn })
+  combineReducers({ token, infos, ideaContent, isLoggedIn, user })
 );
 
 function App() {
