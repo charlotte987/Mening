@@ -81,7 +81,7 @@ router.post("/sign-in", async function (req, res, next) {
 
   res.json({ result, user, error, token });
 });
-
+// creation d'un board
 router.post("/board-creation", async function (req, res, next) {
   var result = false;
   var user = await userModel.findOne({ token: req.body.token });
@@ -102,6 +102,20 @@ router.post("/board-creation", async function (req, res, next) {
   res.json({ result, saveBoard });
 });
 
+router.get("/board/:token", async function (req, res, next) {
+  var boards = [];
+  var user = await userModel.findOne({ token: req.params.token });
+  console.log(req.params.token, ":token utilisateur");
+
+  if (user != null) {
+    boards = await boardModel.find({ userId: user._id });
+  }
+  console.log(boards, "les boards");
+
+  res.json({ boards });
+});
+
+// creation de l'idée
 router.post("/idea-creation", async function (req, res, next) {
   var result = false;
   var user = await userModel.findOne({ token: req.body.token });
@@ -115,16 +129,16 @@ router.post("/idea-creation", async function (req, res, next) {
   }
   console.log(newIdea);
   var saveIdea = await newIdea.save();
-  var board = await boardModel.findOne({ _id: req.body.boardId });
+  var board = await boardModel.findOne({ _id: req.body.boardId }); //recuperation de l'id du board sur lequel on crée l'idée
   if (saveIdea.ideaName) {
-    board.ideaId.push(saveIdea._id);
+    board.ideaId.push(saveIdea._id); //push l'id de l'idée dans le tableau de clé étrangère ideaId du board
     board.save();
     result = true;
   }
 
   res.json({ result, saveIdea });
 });
-
+//suppresion d'une idée
 router.delete("/delete-idea/:ideaId", async function (req, res, next) {
   var deleteIdea = await ideaModel.deleteOne({ _id: req.params.ideaId });
   console / log(_id, "test _id");

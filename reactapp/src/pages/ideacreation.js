@@ -15,13 +15,12 @@ const IdeaCreation = (props) => {
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${props.infos.boardId}`,
+      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${props.infos.boardId}`, //assignation de l'id du board à l'idée tout juste créée
     });
 
     var response = await save.json();
 
     props.onAddIdeaClick(idea, ideaDescription, response.saveIdea._id);
-    console.log(response);
   };
 
   return (
