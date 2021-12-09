@@ -17,6 +17,7 @@ export const Profile = styled(Card)`
   border-color: #f6f6f6;
   border-radius: 5px;
   width: 300px;
+  margin-right: 10%;
 `;
 
 export const BoardList = styled.div`
@@ -28,4 +29,9 @@ export const BoardList = styled.div`
 export const Input = styled.input`
   border-width: 0.3px;
   border-radius: 3px;
+`;
+
+export const Image = styled.img`
+  width: 30%;
+  margin-left: 10%;
 `;

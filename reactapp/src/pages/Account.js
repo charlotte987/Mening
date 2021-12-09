@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { Profile, Div, Body, Input } from "../styles/StyledAccount";
+import { Profile, Div, Body, Input, Image } from "../styles/StyledAccount";
 
 import { Card, Avatar, Modal, Button } from "antd";
 import {
@@ -70,92 +70,95 @@ const Account = (props) => {
   return (
     <Body>
       <Div>
-        <Profile
-          actions={[
-            <SettingOutlined key="setting" onClick={showModal2} />,
-            <Link to="/board-creation">
-              <PlusOutlined key="create" />
-            </Link>,
-            <ContainerOutlined key="board" onClick={showModal} />,
+        <div style={{ paddingBottom: "55px" }}>
+          <Profile
+            actions={[
+              <SettingOutlined key="setting" onClick={showModal2} />,
+              <Link to="/board-creation">
+                <PlusOutlined key="create" />
+              </Link>,
+              <ContainerOutlined key="board" onClick={showModal} />,
 
-            <Link to="/">
-              <LogoutOutlined key="logout" onClick={logout} />
-            </Link>,
-          ]}
-        >
-          <Modal
-            visible={isModalVisible}
-            title="Boards"
-            onCancel={handleCancel}
-            footer={[
-              <Button key="back" onClick={handleCancel}>
-                Close
-              </Button>,
+              <Link to="/">
+                <LogoutOutlined key="logout" onClick={logout} />
+              </Link>,
             ]}
           >
-            {boardName.map((board, i) => (
-              <p key={i} style={{ display: "flex", flexDirection: "row" }}>
-                <p style={{ marginRight: "20px" }}>
-                  <Link to="/board">{board.boardName}</Link>
+            <Modal
+              visible={isModalVisible}
+              title="Boards"
+              onCancel={handleCancel}
+              footer={[
+                <Button key="back" onClick={handleCancel}>
+                  Close
+                </Button>,
+              ]}
+            >
+              {boardName.map((board, i) => (
+                <p key={i} style={{ display: "flex", flexDirection: "row" }}>
+                  <p style={{ marginRight: "20px" }}>
+                    <Link to="/board">{board.boardName}</Link>
+                  </p>
+                  <p>{board.boardDesc}</p>
                 </p>
-                <p>{board.boardDesc}</p>
-              </p>
-            ))}
-          </Modal>
-          <Modal
-            visible={isModalVisible2}
-            title="Settings"
-            onCancel={handleCancel2}
-            footer={[
-              <Button key="back" onClick={handleCancel2}>
-                Close
-              </Button>,
-              <Button
-                key="link"
-                href="/account"
-                type="primary"
-                loading={loading}
-                onClick={handleOk}
-              >
-                Submit
-              </Button>,
-            ]}
-          >
-            <div>
-              <label for="name">Username</label>
-              <Input
-                type="text"
-                id="name"
-                name="name"
-                required
-                minlength="6"
-                maxlength="20"
-                size="10"
-              ></Input>
-            </div>
-            <div>
-              <label for="email">Email Address</label>
-              <Input
-                type="text"
-                id="email"
-                name="email"
-                required
-                minlength="6"
-                maxlength="20"
-                size="10"
-              ></Input>
-            </div>
-          </Modal>
-          <Meta
-            avatar={
-              <Avatar
-                src={`https://eu.ui-avatars.com/api/?name=${props.user.username}`}
-              />
-            }
-            title={`${props.user.username}`}
-            description="Free Account"
-          />
-        </Profile>
+              ))}
+            </Modal>
+            <Modal
+              visible={isModalVisible2}
+              title="Settings"
+              onCancel={handleCancel2}
+              footer={[
+                <Button key="back" onClick={handleCancel2}>
+                  Close
+                </Button>,
+                <Button
+                  key="link"
+                  href="/account"
+                  type="primary"
+                  loading={loading}
+                  onClick={handleOk}
+                >
+                  Submit
+                </Button>,
+              ]}
+            >
+              <div>
+                <label for="name">Username</label>
+                <Input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="6"
+                  maxlength="20"
+                  size="10"
+                ></Input>
+              </div>
+              <div>
+                <label for="email">Email Address</label>
+                <Input
+                  type="text"
+                  id="email"
+                  name="email"
+                  required
+                  minlength="6"
+                  maxlength="20"
+                  size="10"
+                ></Input>
+              </div>
+            </Modal>
+            <Meta
+              avatar={
+                <Avatar
+                  src={`https://eu.ui-avatars.com/api/?name=${props.user.username}&background=5b25c0&color=fff`}
+                />
+              }
+              title={`${props.user.username}`}
+              description="Free Account"
+            />
+          </Profile>
+        </div>
+        <Image src={require("../images/profile.svg")} alt="profile" />
       </Div>
     </Body>
   );
