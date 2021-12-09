@@ -12,7 +12,7 @@ const BoardCreation = (props) => {
 
   var saveBoard = async (title, desc) => {
     props.onSubmitTitle(title, desc);
-    console.log(props.token);
+
     var save = await fetch("/board-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

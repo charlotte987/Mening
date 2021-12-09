@@ -117,11 +117,13 @@ const Board = (props) => {
           <List.Item
             key={item.title}
             actions={[
-              <IconText
-                icon={LikeOutlined}
-                text="156"
-                key="list-vertical-like-o"
-              />,
+              <Button>
+                <IconText
+                  icon={LikeOutlined}
+                  text="156"
+                  key="list-vertical-like-o"
+                />
+              </Button>,
               <IconText
                 icon={MessageOutlined}
                 text="2"
