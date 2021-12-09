@@ -9,15 +9,17 @@ const BoardCreation = (props) => {
   const [title, setTitle] = useState(""); //enregistrement du titre du board dans le store
   const [desc, setDesc] = useState(""); //enregistrement de la description du board dans le store
 
-  var saveBoard = async (title, desc) => {
-    props.onSubmitTitle(title, desc);
-
+  var saveBoardInfos = async (title, desc) => {
     var save = await fetch("/board-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `title=${title}&desc=${desc}&token=${props.token}`,
     });
+    var response = await save.json();
+    props.onSubmitTitle(title, desc, response.saveBoard._id);
+    console.log(response, "tessssst");
   };
+
   return (
     <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
       <Form
@@ -67,7 +69,7 @@ const BoardCreation = (props) => {
             cursor: "pointer",
             paddingLeft: "200px",
           }}
-          onClick={() => saveBoard(title, desc)}
+          onClick={() => saveBoardInfos(title, desc)}
         >
           <BtnLink to="/board">Create</BtnLink>
         </Btn>
@@ -78,8 +80,8 @@ const BoardCreation = (props) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmitTitle: function (title, desc) {
-      dispatch({ type: "saveInfos", title, desc });
+    onSubmitTitle: function (title, desc, boardId) {
+      dispatch({ type: "saveInfos", title, desc, boardId });
     },
   };
 }

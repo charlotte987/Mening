@@ -29,7 +29,6 @@ const Board = (props) => {
     });
   };
 
-  console.log(props.ideaContent, "test d'ideaContent");
   return (
     //bannière et photo de profile//
     <div>
@@ -156,7 +155,6 @@ const Board = (props) => {
 };
 
 function mapStateToProps(state) {
-  console.log(state, "test state");
   return { infos: state.infos, ideaContent: state.ideaContent };
 }
 

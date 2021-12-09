@@ -99,7 +99,7 @@ router.post("/board-creation", async function (req, res, next) {
     result = true;
   }
 
-  res.json({ result });
+  res.json({ result, saveBoard });
 });
 
 router.post("/idea-creation", async function (req, res, next) {
@@ -115,7 +115,10 @@ router.post("/idea-creation", async function (req, res, next) {
   }
   console.log(newIdea);
   var saveIdea = await newIdea.save();
+  var board = await boardModel.findOne({ _id: req.body.boardId });
   if (saveIdea.ideaName) {
+    board.ideaId.push(saveIdea._id);
+    board.save();
     result = true;
   }
 
