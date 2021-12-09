@@ -26,6 +26,7 @@ const Account = (props) => {
 
   const showModal = () => {
     setIsModalVisible(true);
+    console.log(props.user.username);
   };
 
   const showModal2 = () => {
@@ -130,7 +131,7 @@ const Account = (props) => {
           </Modal>
           <Meta
             avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-            title="Nathan Savari"
+            title={`${props.user.username}`}
             description="Free Account"
           />
         </Profile>
@@ -138,6 +139,10 @@ const Account = (props) => {
     </Body>
   );
 };
+
+function mapStateToProps(state) {
+  return { token: state.token, user: state.user };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -150,4 +155,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Account);
+export default connect(mapStateToProps, mapDispatchToProps)(Account);
