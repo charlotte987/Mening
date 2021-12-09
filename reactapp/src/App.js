@@ -16,9 +16,12 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import infos from "./reducers/infos";
 import token from "./reducers/token";
+import isLoggedIn from "./reducers/isLoggedIn";
 import ideaContent from "./reducers/addIdea";
 
-const store = createStore(combineReducers({ token, infos, ideaContent }));
+const store = createStore(
+  combineReducers({ token, infos, ideaContent, isLoggedIn })
+);
 
 function App() {
   return (

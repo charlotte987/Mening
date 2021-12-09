@@ -28,6 +28,7 @@ function Login(props) {
 
     if (body.result === true) {
       props.addToken(body.token);
+      props.setIsLoggedIn();
       setUserExists(true);
     } else {
       setErrorsSignup(body.error);
@@ -45,6 +46,7 @@ function Login(props) {
 
     if (body.result === true) {
       props.addToken(body.token);
+      props.setIsLoggedIn();
       setUserExists(true);
     } else {
       setErrorsSignin(body.error);
@@ -137,6 +139,9 @@ function mapDispatchToProps(dispatch) {
   return {
     addToken: function (token) {
       dispatch({ type: "addToken", token: token });
+    },
+    setIsLoggedIn: function () {
+      dispatch({ type: "setIsLoggedIn" });
     },
   };
 }

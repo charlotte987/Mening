@@ -24,3 +24,8 @@ export const BoardList = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const Input = styled.input`
+  border-width: 0.3px;
+  border-radius: 3px;
+`;

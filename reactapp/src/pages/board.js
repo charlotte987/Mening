@@ -1,33 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { List, Avatar, Space, Button } from "antd";
 import {
   MessageOutlined,
   LikeOutlined,
-  SettingFilled,
+  SettingOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { PromiseProvider } from "mongoose";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Board = (props) => {
   // Tableau d'idées//
-
-  const [ideaExist, setIdeaExist] = useState(false);
-  const data = [
-    {
-      title: "Ant Design Title 1",
-    },
-    {
-      title: "Ant Design Title 2",
-    },
-    {
-      title: "Ant Design Title 3",
-    },
-    {
-      title: "Ant Design Title 4",
-    },
-  ];
 
   const IconText = ({ icon, text }) => (
     <Space>
@@ -36,6 +22,14 @@ const Board = (props) => {
     </Space>
   );
 
+  var deleteIdeaBbdStore = async (ideaId) => {
+    props.deleteIdea(ideaId);
+    const response = await fetch(`/delete-idea/${ideaId}`, {
+      method: "DELETE",
+    });
+  };
+
+  console.log(props.ideaContent, "test d'ideaContent");
   return (
     //bannière et photo de profile//
     <div>
@@ -70,14 +64,22 @@ const Board = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            width: "50px",
+            width: "100%",
             marginLeft: "100px",
           }}
         >
-          <SettingFilled />
+          <SettingOutlined
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              width: "50px",
+            }}
+          />
           <Btn
             style={{
               cursor: "pointer",
+              marginLeft: 30,
             }}
           >
             <BtnLink to="/idea-creation">Suggérer</BtnLink>
@@ -103,53 +105,67 @@ const Board = (props) => {
 
 
       {/* //liste de commentaires// */}
-      <List
-        itemLayout="horizontal"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginLeft: "300px",
-          marginTop: "50px",
-          marginRight: "300px",
-        }}
-        dataSource={data}
-        renderItem={(item) => (
-          <List.Item
-            key={item.title}
-            actions={[
-              <Button>
+      {!props.ideaContent ? (
+        <List></List>
+      ) : (
+        <List
+          itemLayout="horizontal"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginLeft: "300px",
+            marginTop: "50px",
+            marginRight: "300px",
+          }}
+          dataSource={props.ideaContent}
+          renderItem={(item) => (
+            <List.Item
+              key={item.title}
+              actions={[
                 <IconText
                   icon={LikeOutlined}
                   text="156"
                   key="list-vertical-like-o"
-                />
-              </Button>,
-              <IconText
-                icon={MessageOutlined}
-                text="2"
-                key="list-vertical-message"
-              />,
-            ]}
-          >
-            {!props.ideaContent ? (
-              setIdeaExist(false)
-            ) : (
+                />,
+                <IconText
+                  icon={MessageOutlined}
+                  text="2"
+                  key="list-vertical-message"
+                />,
+
+                <Button
+                  type="link"
+                  icon={<DeleteOutlined />}
+                  size={32}
+                  onClick={() => deleteIdeaBbdStore(item.ideaId)}
+                ></Button>,
+              ]}
+            >
               <List.Item.Meta
                 author={"Han Solo"}
                 avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                title={props.ideaContent.idea}
-                description={props.ideaContent.ideaDescription}
+                title={item.title}
+                description={item.ideaDesc}
               ></List.Item.Meta>
-            )}
-          </List.Item>
-        )}
-      />
+            </List.Item>
+          )}
+        />
+      )}
     </div>
   );
 };
 
 function mapStateToProps(state) {
+  console.log(state, "test state");
   return { infos: state.infos, ideaContent: state.ideaContent };
 }
 
-export default connect(mapStateToProps, null)(Board);
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteIdea: function (ideaId) {
+      dispatch({ type: "deleteIdea", ideaId });
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, null)(Board);

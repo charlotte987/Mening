@@ -42,7 +42,7 @@ export const Title = styled.h1`
   padding-top: 3%;
 `;
 
-export const Subtitle = styled.p`
+export const Subtitle = styled.h4`
   color: #222222;
   padding-top: 3%;
 `;
@@ -68,7 +68,7 @@ export const Btn = styled.nav`
 
 export const BtnLink = styled(Link)`
   border-radius: 4px;
-  background: #8247e5;
+  background: #5b25c0;
   padding: 10px 22px;
   margin-top: 15px;
   color: #fff;

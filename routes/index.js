@@ -119,6 +119,19 @@ router.post("/idea-creation", async function (req, res, next) {
     result = true;
   }
 
+  res.json({ result, saveIdea });
+});
+
+router.delete("/delete-idea/:ideaId", async function (req, res, next) {
+  var deleteIdea = await ideaModel.deleteOne({ _id: req.params.ideaId });
+  console / log(_id, "test _id");
+
+  var resultTestId = false;
+  if (deleteIdea === 1) {
+    resultTestId = true;
+    console.log(resultTestId);
+  }
+
   res.json({ result });
 });
 

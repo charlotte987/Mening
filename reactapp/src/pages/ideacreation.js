@@ -10,15 +10,19 @@ const { TextArea } = Input;
 const IdeaCreation = (props) => {
   const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
+  const [ideaId, setIdeaId] = useState("");
 
   var saveIdea = async (idea, ideaDescription) => {
-    props.onAddIdeaClick(idea, ideaDescription);
     console.log(props.token);
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}`,
     });
+
+    var response = await save.json();
+    console.log(response, "test response");
+    props.onAddIdeaClick(idea, ideaDescription, response.saveIdea._id);
   };
 
   return (
@@ -72,11 +76,12 @@ const IdeaCreation = (props) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddIdeaClick: function (idea, ideaDescription) {
+    onAddIdeaClick: function (idea, ideaDescription, Id) {
       dispatch({
         type: "addIdea",
         idea: idea,
         ideaDescription: ideaDescription,
+        Id: Id,
       });
     },
   };
