@@ -74,7 +74,7 @@ const Account = (props) => {
           <Profile
             actions={[
               <SettingOutlined key="setting" onClick={showModal2} />,
-              <Link to="/board-creation">
+              <Link to="/create">
                 <PlusOutlined key="create" />
               </Link>,
               <ContainerOutlined key="board" onClick={showModal} />,
