@@ -6,7 +6,6 @@ import {
   SettingOutlined,
   DeleteOutlined,
   CaretDownOutlined,
-  LeftCircleOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";

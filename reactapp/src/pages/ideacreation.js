@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input } from "antd";
 import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
 // import Navbar from "../components/Navbar";
-
+import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 const { TextArea } = Input;
@@ -10,15 +10,12 @@ const { TextArea } = Input;
 const IdeaCreation = (props) => {
   const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
-  const [ideaId, setIdeaId] = useState("");
-  const [likes, setLikes] = useState(0);
-  const [voteCount, setVoteCount] = useState(0);
-
+  const [check, setCheck] = useState(false);
   var saveIdea = async (idea, ideaDescription) => {
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&likesFromFront=${likes}&voteCountFromFront=${voteCount}&boardId=${props.infos.boardId}`,
+      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${props.infos.boardId}`,
     });
 
     var response = await save.json();
@@ -30,8 +27,12 @@ const IdeaCreation = (props) => {
       response.saveIdea.likes,
       response.saveIdea.voteCount
     );
+    setCheck(true);
   };
 
+  if (check == true) {
+    return <Navigate to={`/board/${props.infos.boardId}`} />;
+  }
   return (
     <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
       <Form
@@ -73,7 +74,8 @@ const IdeaCreation = (props) => {
             paddingLeft: "200px",
           }}
         >
-          <BtnLink to="/board">Create</BtnLink>
+          Create
+          {/* <BtnLink to="/board">Create</BtnLink> */}
         </Btn>
       </Form>
     </HeroDiv>
