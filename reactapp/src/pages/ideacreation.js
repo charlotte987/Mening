@@ -10,26 +10,15 @@ const { TextArea } = Input;
 const IdeaCreation = (props) => {
   const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
-<<<<<<< HEAD
-=======
   const [ideaId, setIdeaId] = useState("");
   const [likes, setLikes] = useState(0);
   const [voteCount, setVoteCount] = useState(0);
->>>>>>> compteurvote
 
   var saveIdea = async (idea, ideaDescription) => {
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-<<<<<<< HEAD
-      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${props.infos.boardId}`, //assignation de l'id du board à l'idée tout juste créée
-    });
-
-    var response = await save.json();
-
-    props.onAddIdeaClick(idea, ideaDescription, response.saveIdea._id);
-=======
-      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&likesFromFront=${likes}&voteCountFromFront=${voteCount}`,
+      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&likesFromFront=${likes}&voteCountFromFront=${voteCount}&boardId=${props.infos.boardId}`,
     });
 
     var response = await save.json();
@@ -41,7 +30,6 @@ const IdeaCreation = (props) => {
       response.saveIdea.likes,
       response.saveIdea.voteCount
     );
->>>>>>> compteurvote
   };
 
   return (

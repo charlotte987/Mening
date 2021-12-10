@@ -129,14 +129,11 @@ router.post("/idea-creation", async function (req, res, next) {
       userId: user._id,
     });
   }
-
+  console.log(req.body, "test reqbody");
   var saveIdea = await newIdea.save();
-
   var board = await boardModel.findOne({ _id: req.body.boardId }); //recuperation de l'id du board sur lequel on crée l'idée
-
-  console.log(saveIdea);
-
   if (saveIdea.ideaName) {
+    console.log(board, "test board");
     board.ideaId.push(saveIdea._id); //push l'id de l'idée dans le tableau de clé étrangère ideaId du board
     board.save();
     result = true;
