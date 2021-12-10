@@ -1,26 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { List, Avatar, Space, Button } from "antd";
 import {
   CaretUpOutlined,
   SettingOutlined,
   DeleteOutlined,
-<<<<<<< HEAD
   CaretDownOutlined,
-=======
   LeftCircleOutlined,
->>>>>>> linkboards
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
-<<<<<<< HEAD
-
+import { useParams } from "react-router-dom";
 import Background from "../images/banner.jpg";
-
-const Board = (props) => {
-  //compteur de like//
-=======
-import { Link, useParams } from "react-router-dom";
 
 const Board = (props) => {
   // Tableau d'idées//
@@ -36,7 +27,6 @@ const Board = (props) => {
     };
     findBoards();
   }, []);
->>>>>>> linkboards
 
   const like = async (Id) => {
     console.log(
@@ -81,7 +71,6 @@ const Board = (props) => {
   return (
     //bannière et photo de profile//
     <div>
-<<<<<<< HEAD
       <div
         style={{
           height: "200px",
@@ -92,20 +81,6 @@ const Board = (props) => {
           backgroundSize: "cover",
         }}
       >
-=======
-      <div className="Banner">
-        <span>
-          <Link to="/">
-            <LeftCircleOutlined
-              style={{
-                color: "white",
-                fontSize: "200%",
-                cursor: "pointer",
-              }}
-            />
-          </Link>
-        </span>
->>>>>>> linkboards
         <img
           src={require("../images/logolacapsule.png")}
           alt="icon"

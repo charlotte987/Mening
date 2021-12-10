@@ -82,7 +82,6 @@ const Account = (props) => {
               </Link>,
             ]}
           >
-<<<<<<< HEAD
             <Modal
               visible={isModalVisible}
               title="Boards"
@@ -99,13 +98,6 @@ const Account = (props) => {
                     <Link to="/board">{board.boardName}</Link>
                   </p>
                   <p>{board.boardDesc}</p>
-=======
-            {" "}
-            {boardName.map((board, i) => (
-              <p key={i} style={{ display: "flex", flexDirection: "row" }}>
-                <p style={{ marginRight: "20px" }}>
-                  <Link to={`/board/${board._id}`}>{board.boardName}</Link>
->>>>>>> linkboards
                 </p>
               ))}
             </Modal>
