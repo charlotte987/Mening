@@ -93,7 +93,7 @@ router.post("/board-creation", async function (req, res, next) {
       userId: user._id,
     });
   }
-  console.log(newBoard);
+
   var saveBoard = await newBoard.save();
   if (saveBoard.title) {
     result = true;
@@ -105,14 +105,19 @@ router.post("/board-creation", async function (req, res, next) {
 router.get("/board/:token", async function (req, res, next) {
   var boards = [];
   var user = await userModel.findOne({ token: req.params.token });
-  console.log(req.params.token, ":token utilisateur");
 
   if (user != null) {
     boards = await boardModel.find({ userId: user._id });
   }
-  console.log(boards, "les boards");
 
   res.json({ boards });
+});
+
+router.get("/myboard/:id", async function (req, res, next) {
+  var board = await boardModel.find({ _id: req.params.id });
+  console.log(board);
+
+  res.json({ board });
 });
 
 // creation de l'idée
@@ -148,7 +153,6 @@ router.delete("/delete-idea/:ideaId", async function (req, res, next) {
   var resultTestId = false;
   if (deleteIdea === 1) {
     resultTestId = true;
-    console.log(resultTestId);
   }
 
   res.json({ result });

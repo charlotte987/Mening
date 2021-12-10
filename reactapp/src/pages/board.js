@@ -5,15 +5,38 @@ import {
   CaretUpOutlined,
   SettingOutlined,
   DeleteOutlined,
+<<<<<<< HEAD
   CaretDownOutlined,
+=======
+  LeftCircleOutlined,
+>>>>>>> linkboards
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 
 import Background from "../images/banner.jpg";
 
 const Board = (props) => {
   //compteur de like//
+=======
+import { Link, useParams } from "react-router-dom";
+
+const Board = (props) => {
+  // Tableau d'idées//
+  const [board, setBoard] = useState([]);
+  var { id } = useParams();
+
+  useEffect(() => {
+    var findBoards = async () => {
+      var boards = await fetch(`/myboard/${id}`);
+      var body = await boards.json();
+      console.log(body.board[0].boardName, "LE BODY");
+      setBoard(body.board[0]);
+    };
+    findBoards();
+  }, []);
+>>>>>>> linkboards
 
   const like = async (Id) => {
     console.log(
@@ -58,6 +81,7 @@ const Board = (props) => {
   return (
     //bannière et photo de profile//
     <div>
+<<<<<<< HEAD
       <div
         style={{
           height: "200px",
@@ -68,6 +92,20 @@ const Board = (props) => {
           backgroundSize: "cover",
         }}
       >
+=======
+      <div className="Banner">
+        <span>
+          <Link to="/">
+            <LeftCircleOutlined
+              style={{
+                color: "white",
+                fontSize: "200%",
+                cursor: "pointer",
+              }}
+            />
+          </Link>
+        </span>
+>>>>>>> linkboards
         <img
           src={require("../images/logolacapsule.png")}
           alt="icon"
@@ -90,7 +128,7 @@ const Board = (props) => {
             fontWeight: "bold",
           }}
         >
-          {props.infos.title}
+          {board.boardName}
         </h1>{" "}
         {/* Setting et bouton suggérer */}
         <div
@@ -132,7 +170,7 @@ const Board = (props) => {
           fontWeight: "lighter",
         }}
       >
-        {props.infos.desc}
+        {board.boardDesc}
       </h2>
       {/* 
 
