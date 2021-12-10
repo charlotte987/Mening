@@ -28,9 +28,7 @@ const Account = (props) => {
       var boards = await fetch(`/board/${props.token}`);
       var body = await boards.json();
       console.log(body);
-      setBoardName(body.boards);
-
-      console.log(body.boards, ":body.boards");
+      setBoardName(body.boards); // stockage des infos des boards de l'utilisateur dans l'etat boardName
     };
     findBoards();
   }, []);
@@ -41,7 +39,6 @@ const Account = (props) => {
 
   const showModal = () => {
     setIsModalVisible(true);
-    console.log(props.user.username);
   };
 
   const showModal2 = () => {
@@ -94,10 +91,11 @@ const Account = (props) => {
               </Button>,
             ]}
           >
+            {" "}
             {boardName.map((board, i) => (
               <p key={i} style={{ display: "flex", flexDirection: "row" }}>
                 <p style={{ marginRight: "20px" }}>
-                  <Link to="/board">{board.boardName}</Link>
+                  <Link to={`/board/${board._id}`}>{board.boardName}</Link>
                 </p>
                 <p>{board.boardDesc}</p>
               </p>

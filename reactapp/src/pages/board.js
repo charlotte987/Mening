@@ -6,14 +6,27 @@ import {
   LikeOutlined,
   SettingOutlined,
   DeleteOutlined,
+  LeftCircleOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { PromiseProvider } from "mongoose";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Board = (props) => {
   // Tableau d'idées//
+  const [board, setBoard] = useState([]);
+  var { id } = useParams();
+
+  useEffect(() => {
+    var findBoards = async () => {
+      var boards = await fetch(`/myboard/${id}`);
+      var body = await boards.json();
+      console.log(body.board[0].boardName, "LE BODY");
+      setBoard(body.board[0]);
+    };
+    findBoards();
+  }, []);
 
   const IconText = ({ icon, text }) => (
     <Space>
@@ -33,6 +46,17 @@ const Board = (props) => {
     //bannière et photo de profile//
     <div>
       <div className="Banner">
+        <span>
+          <Link to="/">
+            <LeftCircleOutlined
+              style={{
+                color: "white",
+                fontSize: "200%",
+                cursor: "pointer",
+              }}
+            />
+          </Link>
+        </span>
         <img
           src={require("../images/julian.jpg")}
           className="avatar"
@@ -55,7 +79,7 @@ const Board = (props) => {
             width: "100%",
           }}
         >
-          {props.infos.title}
+          {board.boardName}
         </h1>{" "}
         {/* Setting et bouton suggérer */}
         <div
@@ -100,7 +124,7 @@ const Board = (props) => {
           fontWeight: "lighter",
         }}
       >
-        {props.infos.desc}
+        {board.boardDesc}
       </h2>
       {/* 
 
