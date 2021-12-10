@@ -71,7 +71,13 @@ const IdeaCreation = (props) => {
           onClick={() => saveIdea(idea, ideaDescription)}
           style={{
             cursor: "pointer",
-            paddingLeft: "200px",
+            borderRadius: "4px",
+            background: "#5b25c0",
+            padding: "10px 22px",
+            marginTop: "15px",
+            color: "#fff",
+            outline: "none",
+            border: "none",
           }}
         >
           Create
