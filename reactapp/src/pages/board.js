@@ -9,11 +9,8 @@ import {
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
-<<<<<<< HEAD
 
 import Background from "../images/banner.jpg";
-=======
->>>>>>> compteurvote
 
 const Board = (props) => {
   //compteur de like//
