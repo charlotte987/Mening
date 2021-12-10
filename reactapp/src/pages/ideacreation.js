@@ -11,18 +11,26 @@ const IdeaCreation = (props) => {
   const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
   const [ideaId, setIdeaId] = useState("");
+  const [likes, setLikes] = useState(0);
+  const [voteCount, setVoteCount] = useState(0);
 
   var saveIdea = async (idea, ideaDescription) => {
     console.log(props.token);
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}`,
+      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&likesFromFront=${likes}&voteCountFromFront=${voteCount}`,
     });
 
     var response = await save.json();
     console.log(response, "test response");
-    props.onAddIdeaClick(idea, ideaDescription, response.saveIdea._id);
+    props.onAddIdeaClick(
+      idea,
+      ideaDescription,
+      response.saveIdea._id,
+      response.saveIdea.likes,
+      response.saveIdea.voteCount
+    );
   };
 
   return (
@@ -76,11 +84,13 @@ const IdeaCreation = (props) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddIdeaClick: function (idea, ideaDescription, Id) {
+    onAddIdeaClick: function (idea, ideaDescription, Id, likes, voteCount) {
       dispatch({
         type: "addIdea",
         idea: idea,
         ideaDescription: ideaDescription,
+        likes: likes,
+        voteCount: voteCount,
         Id: Id,
       });
     },
