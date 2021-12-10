@@ -5,6 +5,8 @@ export default function (ideaContent = [], action) {
       title: action.idea,
       ideaDesc: action.ideaDescription,
       ideaId: action.Id,
+      likes: action.likes,
+      voteCount: action.voteCount,
     });
     return ideaContentCopy;
   } else if (action.type == "deleteIdea") {
@@ -19,6 +21,18 @@ export default function (ideaContent = [], action) {
     if (position != null) {
       ideaContentCopy.splice(position, 1);
     }
+
+    return ideaContentCopy;
+  } else if (action.type === "addCountIdea") {
+    var ideaContentCopy = [...ideaContent];
+    ideaContentCopy.likes = ideaContentCopy.likes + 1;
+    ideaContentCopy.voteCount = ideaContentCopy.voteCount + 1;
+
+    return ideaContentCopy;
+  } else if (action.type === "deductCountIdea") {
+    var ideaContentCopy = [...ideaContent];
+    ideaContentCopy.likes = ideaContentCopy.likes - 1;
+    ideaContentCopy.voteCount = ideaContentCopy.voteCount + 1;
 
     return ideaContentCopy;
   } else {

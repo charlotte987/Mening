@@ -1,26 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { List, Avatar, Space, Button } from "antd";
 import {
-  MessageOutlined,
-  LikeOutlined,
+  CaretUpOutlined,
   SettingOutlined,
   DeleteOutlined,
+  CaretDownOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 
 import Background from "../images/banner.jpg";
+=======
+>>>>>>> compteurvote
 
 const Board = (props) => {
-  // Tableau d'idées//
+  //compteur de like//
 
-  const IconText = ({ icon, text }) => (
-    <Space>
-      {React.createElement(icon)}
-      {text}
-    </Space>
-  );
+  const like = async (Id) => {
+    console.log(
+      Id,
+      "test de réception des likes et vote du store sur le board"
+    );
+    props.like(Id);
+    var save = await fetch(`/idea-modification/${Id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `action=like`,
+    });
+    var responseUpdateLike = await save.json();
+    console.log(responseUpdateLike, "test de l'enregistrement de vote en BDD");
+  };
+
+  const dislike = async (Id) => {
+    props.dislike(Id);
+    var save = await fetch(`/idea-modification/${Id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `action=dislike`,
+    });
+
+    var responseUpdateDisLike = await save.json();
+
+    console.log(
+      responseUpdateDisLike,
+      "test de l'enregistrement de vote en BDD"
+    );
+  };
+
+  // Tableau d'idées//
 
   var deleteIdeaBbdStore = async (ideaId) => {
     props.deleteIdea(ideaId);
@@ -111,7 +140,7 @@ const Board = (props) => {
       {/* 
 
 
-      {/* //liste de commentaires// */}
+      {/* //liste d'idées et pictos// */}
       {!props.ideaContent ? (
         <List></List>
       ) : (
@@ -129,19 +158,26 @@ const Board = (props) => {
             <List.Item
               key={item.title}
               actions={[
-                <IconText
-                  icon={LikeOutlined}
-                  text="156"
-                  key="list-vertical-like-o"
-                />,
-                <IconText
-                  icon={MessageOutlined}
-                  text="2"
-                  key="list-vertical-message"
-                />,
-
                 <Button
-                  type="link"
+                  type="text"
+                  icon={<CaretUpOutlined />}
+                  size={32}
+                  onClick={() => like(item.ideaId)}
+                ></Button>,
+                <Button
+                  type="text"
+                  icon={<CaretDownOutlined />}
+                  size={32}
+                  onClick={() => {
+                    dislike(item.ideaId);
+                  }}
+                ></Button>,
+                <p>
+                  {" "}
+                  {item.likes} out of {item.voteCount} voting{" "}
+                </p>,
+                <Button
+                  type="text"
                   icon={<DeleteOutlined />}
                   size={32}
                   onClick={() => deleteIdeaBbdStore(item.ideaId)}
@@ -178,6 +214,12 @@ function mapDispatchToProps(dispatch) {
   return {
     deleteIdea: function (ideaId) {
       dispatch({ type: "deleteIdea", ideaId });
+    },
+    like: function (Id) {
+      dispatch({ type: "addCountIdea", Id });
+    },
+    dislike: function (Id) {
+      dispatch({ type: "deductCountIdea", Id });
     },
   };
 }

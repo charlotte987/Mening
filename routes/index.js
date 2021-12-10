@@ -124,12 +124,18 @@ router.post("/idea-creation", async function (req, res, next) {
     var newIdea = new ideaModel({
       ideaName: req.body.idea,
       ideaDesc: req.body.ideaDesc,
+      likes: req.body.likesFromFront,
+      voteCount: req.body.voteCountFromFront,
       userId: user._id,
     });
   }
-  console.log(newIdea);
+
   var saveIdea = await newIdea.save();
+<<<<<<< HEAD
   var board = await boardModel.findOne({ _id: req.body.boardId }); //recuperation de l'id du board sur lequel on crée l'idée
+=======
+  console.log(saveIdea);
+>>>>>>> compteurvote
   if (saveIdea.ideaName) {
     board.ideaId.push(saveIdea._id); //push l'id de l'idée dans le tableau de clé étrangère ideaId du board
     board.save();
@@ -141,7 +147,6 @@ router.post("/idea-creation", async function (req, res, next) {
 //suppresion d'une idée
 router.delete("/delete-idea/:ideaId", async function (req, res, next) {
   var deleteIdea = await ideaModel.deleteOne({ _id: req.params.ideaId });
-  console / log(_id, "test _id");
 
   var resultTestId = false;
   if (deleteIdea === 1) {
@@ -150,6 +155,30 @@ router.delete("/delete-idea/:ideaId", async function (req, res, next) {
   }
 
   res.json({ result });
+});
+
+router.put("/idea-modification/:Id", async function (req, res, next) {
+  console.log("route modification", req.params, req.body);
+  var searchIdea = await ideaModel.findOne({ _id: req.params.Id });
+  console.log("trouvé");
+  var result = false;
+  if (searchIdea && req.body.action == "like") {
+    searchIdea.likes = searchIdea.likes + 1;
+    searchIdea.voteCount = searchIdea.voteCount + 1;
+    await searchIdea.save();
+    result = true;
+  }
+  if (searchIdea && req.body.action == "dislike") {
+    searchIdea.likes = searchIdea.likes - 1;
+    searchIdea.voteCount = searchIdea.voteCount + 1;
+    await searchIdea.save();
+    result = true;
+  }
+
+  console.log(searchIdea, "searchIdea");
+  var ideas = await ideaModel.find();
+
+  res.json({ result, ideas });
 });
 
 module.exports = router;
