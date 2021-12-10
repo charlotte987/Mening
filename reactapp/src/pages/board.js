@@ -8,9 +8,9 @@ import {
   DeleteOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
-import { PromiseProvider } from "mongoose";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
+import Background from "../images/banner.jpg";
 
 const Board = (props) => {
   // Tableau d'idées//
@@ -32,27 +32,36 @@ const Board = (props) => {
   return (
     //bannière et photo de profile//
     <div>
-      <div className="Banner">
+      <div
+        style={{
+          height: "200px",
+          backgroundImage: `url(${Background})`,
+          // backgroundColor: "blue",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         <img
-          src={require("../images/julian.jpg")}
-          className="avatar"
-          alt="profile"
+          src={require("../images/logolacapsule.png")}
+          alt="icon"
+          style={{
+            width: "100px",
+            borderRadius: "50%",
+            marginLeft: "200px",
+            marginTop: "12%",
+          }}
         ></img>
       </div>
 
       {/* //Titre et Description// */}
-      <div
-        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
-      >
+      <div style={{ display: "flex" }}>
         <h1
           style={{
-            display: "flex",
-            flexDirection: "row",
             marginLeft: "400px",
             marginTop: "20px",
-            marginRight: "300px",
+            marginRight: "20%",
             fontWeight: "bold",
-            width: "100%",
           }}
         >
           {props.infos.title}
@@ -64,23 +73,23 @@ const Board = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            width: "100%",
-            marginLeft: "400px",
+            width: "100vw",
+            marginLeft: "20%",
+            marginRight: "50%",
           }}
         >
           <SettingOutlined
             style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
               width: "50px",
               cursor: "pointer",
+              marginTop: "10%",
+              marginRight: "10%",
             }}
           />
           <Btn
             style={{
               cursor: "pointer",
-              marginLeft: 30,
+              marginRight: "10%",
             }}
           >
             <BtnLink to="/idea-creation">Suggérer</BtnLink>
@@ -90,10 +99,7 @@ const Board = (props) => {
 
       <h2
         style={{
-          display: "flex",
-          flexDirection: "column",
           marginLeft: "400px",
-          marginTop: "5px",
           marginRight: "300px",
           fontSize: "20px",
           color: "grey",
@@ -144,7 +150,11 @@ const Board = (props) => {
             >
               <List.Item.Meta
                 author={"Han Solo"}
-                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                avatar={
+                  <Avatar
+                    src={`https://eu.ui-avatars.com/api/?name=${props.user.username}&background=5b25c0&color=fff`}
+                  />
+                }
                 title={item.title}
                 description={item.ideaDesc}
               ></List.Item.Meta>
@@ -157,7 +167,11 @@ const Board = (props) => {
 };
 
 function mapStateToProps(state) {
-  return { infos: state.infos, ideaContent: state.ideaContent };
+  return {
+    infos: state.infos,
+    ideaContent: state.ideaContent,
+    user: state.user,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
