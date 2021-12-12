@@ -114,8 +114,10 @@ router.get("/board/:token", async function (req, res, next) {
 });
 // recuperation d'un board avec son id
 router.get("/myboard/:id", async function (req, res, next) {
-  var board = await boardModel.find({ _id: req.params.id });
-  console.log(board);
+  var board = await boardModel
+    .find({ _id: req.params.id })
+    .populate("ideaId")
+    .exec();
 
   res.json({ board });
 });
@@ -138,7 +140,7 @@ router.post("/idea-creation", async function (req, res, next) {
   var saveIdea = await newIdea.save();
   var board = await boardModel.findOne({ _id: req.body.boardId }); //recuperation de l'id du board sur lequel on crée l'idée
   if (saveIdea.ideaName) {
-    board.ideaId.push(saveIdea._id); //push l'id de l'idée dans le tableau de clé étrangère ideaId du board
+    board.ideaId.push(saveIdea); //push de l'idée dans le tableau de clé étrangère ideaId du board
     board.save();
     result = true;
   }
@@ -148,7 +150,7 @@ router.post("/idea-creation", async function (req, res, next) {
 //suppresion d'une idée
 router.delete("/delete-idea/:ideaId", async function (req, res, next) {
   var deleteIdea = await ideaModel.deleteOne({ _id: req.params.ideaId });
-
+  console.log(deleteIdea);
   var resultTestId = false;
   if (deleteIdea === 1) {
     resultTestId = true;

@@ -11,6 +11,7 @@ const IdeaCreation = (props) => {
   const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
   const [check, setCheck] = useState(false); //etat permettant de redirect vers /board/boardId à la création de l'idée
+
   //Creation de l'idée en DB
   var saveIdea = async (idea, ideaDescription) => {
     var save = await fetch("/idea-creation", {

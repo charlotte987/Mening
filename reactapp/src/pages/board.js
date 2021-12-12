@@ -27,7 +27,7 @@ const Board = (props) => {
     var findBoards = async () => {
       var boards = await fetch(`/myboard/${id}`); // utilisation du param pour retrouver l'id du board
       var body = await boards.json();
-      console.log(body.board[0].ideaId, "LE BODY.ideaID");
+      console.log(body.board[0], "LE BODY.ideaID");
       setBoard(body.board[0]);
     };
     findBoards();
@@ -109,7 +109,7 @@ const Board = (props) => {
           }}
         >
           {board.boardName}
-        </h1>{" "}
+        </h1>
         {/* Setting et bouton suggérer */}
         <div
           className="icons-list"
@@ -117,7 +117,6 @@ const Board = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            width: "100vw",
             marginLeft: "20%",
             marginRight: "50%",
           }}
@@ -128,7 +127,7 @@ const Board = (props) => {
               marginTop: "6%",
               marginRight: "5%",
               marginLeft: "20%",
-              fontSize: "25px",
+              fontSize: "20px",
             }}
           />
           <Btn
@@ -145,7 +144,7 @@ const Board = (props) => {
             url="https://youtube.com/"
             quote={"Abonne toi!"}
             hashtag="#React"
-            style={{ marginLeft: "5%", marginTop: "5%" }}
+            style={{ marginTop: "5%" }}
           >
             <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
           </FacebookShareButton>
@@ -183,7 +182,7 @@ const Board = (props) => {
 
 
       {/* //liste d'idées et pictos// */}
-      {!props.ideaContent ? (
+      {!board.ideaId ? (
         <List></List>
       ) : (
         <List
@@ -195,7 +194,7 @@ const Board = (props) => {
             marginTop: "50px",
             marginRight: "300px",
           }}
-          dataSource={props.ideaContent}
+          dataSource={board.ideaId}
           renderItem={(item) => (
             <List.Item
               key={item.title}
@@ -222,7 +221,7 @@ const Board = (props) => {
                   type="text"
                   icon={<DeleteOutlined />}
                   size={32}
-                  onClick={() => deleteIdeaBbdStore(item.ideaId)}
+                  onClick={() => deleteIdeaBbdStore(item._id)}
                 ></Button>,
               ]}
             >
@@ -233,7 +232,7 @@ const Board = (props) => {
                     src={`https://eu.ui-avatars.com/api/?name=${props.user.username}&background=5b25c0&color=fff`}
                   />
                 }
-                title={item.title}
+                title={item.ideaName}
                 description={item.ideaDesc}
               ></List.Item.Meta>
             </List.Item>
