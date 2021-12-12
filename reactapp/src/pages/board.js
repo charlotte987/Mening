@@ -124,16 +124,18 @@ const Board = (props) => {
         >
           <SettingOutlined
             style={{
-              width: "50px",
               cursor: "pointer",
-              marginTop: "10%",
-              marginRight: "10%",
+              marginTop: "6%",
+              marginRight: "5%",
+              marginLeft: "20%",
+              fontSize: "25px",
             }}
           />
           <Btn
             style={{
               cursor: "pointer",
               marginRight: "10%",
+              marginLeft: "50%",
             }}
           >
             <BtnLink to="/idea-creation">Suggérer</BtnLink>
@@ -143,6 +145,7 @@ const Board = (props) => {
             url="https://youtube.com/"
             quote={"Abonne toi!"}
             hashtag="#React"
+            style={{ marginLeft: "5%", marginTop: "5%" }}
           >
             <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
           </FacebookShareButton>
@@ -150,6 +153,7 @@ const Board = (props) => {
             url="https://youtube.com/"
             quote={"Abonne toi!"}
             hashtag="#React"
+            style={{ marginLeft: "5%", marginTop: "5%" }}
           >
             <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
           </TwitterShareButton>
@@ -157,6 +161,7 @@ const Board = (props) => {
             url="https://youtube.com/"
             quote={"Abonne toi!"}
             hashtag="#React"
+            style={{ marginLeft: "5%", marginTop: "5%" }}
           >
             <EmailIcon logoFillColor="white" round={true}></EmailIcon>
           </EmailShareButton>
