@@ -22,7 +22,7 @@ const Account = (props) => {
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [loading, setLoading] = useState(false);
   const [boardName, setBoardName] = useState([]);
-
+  //Recuperation des boards en DB pour les afficher dans la liste des boards de l'utilisateur
   useEffect(() => {
     var findBoards = async () => {
       var boards = await fetch(`/board/${props.token}`);

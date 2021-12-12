@@ -101,7 +101,7 @@ router.post("/board-creation", async function (req, res, next) {
 
   res.json({ result, saveBoard });
 });
-
+// recuperation des boards d'un utilisateur avec le token
 router.get("/board/:token", async function (req, res, next) {
   var boards = [];
   var user = await userModel.findOne({ token: req.params.token });
@@ -112,7 +112,7 @@ router.get("/board/:token", async function (req, res, next) {
 
   res.json({ boards });
 });
-
+// recuperation d'un board avec son id
 router.get("/myboard/:id", async function (req, res, next) {
   var board = await boardModel.find({ _id: req.params.id });
   console.log(board);

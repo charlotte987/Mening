@@ -11,17 +11,23 @@ import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Background from "../images/banner.jpg";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+} from "react-share";
+import { FacebookIcon, TwitterIcon, EmailIcon } from "react-share";
 
 const Board = (props) => {
   // Tableau d'idées//
   const [board, setBoard] = useState([]);
   var { id } = useParams();
-
+  // recuperation du board
   useEffect(() => {
     var findBoards = async () => {
-      var boards = await fetch(`/myboard/${id}`);
+      var boards = await fetch(`/myboard/${id}`); // utilisation du param pour retrouver l'id du board
       var body = await boards.json();
-      console.log(body.board[0].boardName, "LE BODY");
+      console.log(body.board[0].ideaId, "LE BODY.ideaID");
       setBoard(body.board[0]);
     };
     findBoards();
@@ -132,6 +138,28 @@ const Board = (props) => {
           >
             <BtnLink to="/idea-creation">Suggérer</BtnLink>
           </Btn>
+
+          <FacebookShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+          >
+            <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+          </FacebookShareButton>
+          <TwitterShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+          >
+            <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
+          </TwitterShareButton>
+          <EmailShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+          >
+            <EmailIcon logoFillColor="white" round={true}></EmailIcon>
+          </EmailShareButton>
         </div>
       </div>
 

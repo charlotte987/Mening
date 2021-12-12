@@ -9,9 +9,10 @@ const { TextArea } = Input;
 const BoardCreation = (props) => {
   const [title, setTitle] = useState(""); //enregistrement du titre du board dans le store
   const [desc, setDesc] = useState(""); //enregistrement de la description du board dans le store
-  const [boardId, setBoardId] = useState("");
-  const [check, setCheck] = useState(false);
+  const [boardId, setBoardId] = useState(""); //enregistrement de l'id du board qui vient d'être créée
+  const [check, setCheck] = useState(false); //etat permettant de redirect vers /board/boardId à la création du board
 
+  //Creation du board en DB (titre et description)
   var saveBoardInfos = async (title, desc) => {
     var save = await fetch("/board-creation", {
       method: "POST",
@@ -19,7 +20,7 @@ const BoardCreation = (props) => {
       body: `title=${title}&desc=${desc}&token=${props.token}`,
     });
     var response = await save.json();
-    props.onSubmitTitle(title, desc, response.saveBoard._id); //recuperation des infos du board (du backend) pour les enregistrer dans le store
+    props.onSubmitTitle(title, desc, response.saveBoard._id); //recuperation de l'id du board (du backend) pour les enregistrer dans le store
     setBoardId(response.saveBoard._id);
     console.log(response.saveBoard._id, "tessssst");
     setCheck(true);
