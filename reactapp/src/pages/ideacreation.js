@@ -17,8 +17,8 @@ const IdeaCreation = (props) => {
     var findBoards = async () => {
       var boards = await fetch(`/board/${props.token}`);
       var body = await boards.json();
-      console.log(body);
-      setBoardId(body.boards._id);
+      console.log(body.boards[0]._id, "infos de mon board");
+      setBoardId(body.boards[0]._id);
     };
     findBoards();
   }, []);
@@ -28,7 +28,7 @@ const IdeaCreation = (props) => {
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${props.infos.boardId}`,
+      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${boardId}`,
     });
 
     var response = await save.json();
@@ -44,7 +44,7 @@ const IdeaCreation = (props) => {
   };
 
   if (check == true) {
-    return <Navigate to={`/board/${props.infos.boardId}`} />;
+    return <Navigate to={`/board/${boardId}`} />;
   }
   return (
     <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>

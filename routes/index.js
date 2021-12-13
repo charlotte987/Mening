@@ -114,7 +114,7 @@ router.get("/board/:token", async function (req, res, next) {
 
   res.json({ boards });
 });
-<<<<<<< HEAD
+
 // recuperation d'un board avec son id et recuperer tout le contenu de la clé étrangere ideaId
 router.get("/myboard/:id", async function (req, res, next) {
   var board = await boardModel
@@ -124,8 +124,6 @@ router.get("/myboard/:id", async function (req, res, next) {
 
   res.json({ board });
 });
-=======
->>>>>>> aa678f32fde1ba6436b7260be3fca4c2850aa0d0
 
 // creation de l'idée
 router.post("/idea-creation", async function (req, res, next) {
