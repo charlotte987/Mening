@@ -42,14 +42,6 @@
   width: 250px;
 }
 
-.Banner {
-  height: 200px;
-  background-image: url("./images/pine-watt.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .avatar {
   width: 150px;
   border-radius: 50%;

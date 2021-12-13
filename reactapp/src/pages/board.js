@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import { List, Avatar, Space, Button } from "antd";
+import { List, Avatar, Button } from "antd";
 import {
   CaretUpOutlined,
   SettingOutlined,
@@ -38,18 +38,23 @@ const Board = (props) => {
       Id,
       "test de réception des likes et vote du store sur le board"
     );
+
     props.like(Id);
+
     var save = await fetch(`/idea-modification/${Id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `action=like`,
     });
+
     var responseUpdateLike = await save.json();
+
     console.log(responseUpdateLike, "test de l'enregistrement de vote en BDD");
   };
 
   const dislike = async (Id) => {
     props.dislike(Id);
+
     var save = await fetch(`/idea-modification/${Id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -68,6 +73,7 @@ const Board = (props) => {
 
   var deleteIdeaBbdStore = async (ideaId) => {
     props.deleteIdea(ideaId);
+
     const response = await fetch(`/delete-idea/${ideaId}`, {
       method: "DELETE",
     });
@@ -80,7 +86,6 @@ const Board = (props) => {
         style={{
           height: "200px",
           backgroundImage: `url(${Background})`,
-          // backgroundColor: "blue",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -90,9 +95,9 @@ const Board = (props) => {
           src={require("../images/logolacapsule.png")}
           alt="icon"
           style={{
-            width: "100px",
-            borderRadius: "50%",
-            marginLeft: "200px",
+            width: "95px",
+            borderRadius: "5rem",
+            marginLeft: "10rem",
             marginTop: "12%",
           }}
         ></img>
@@ -100,16 +105,18 @@ const Board = (props) => {
 
       {/* //Titre et Description// */}
       <div style={{ display: "flex" }}>
-        <h1
+        <div
           style={{
-            marginLeft: "400px",
-            marginTop: "20px",
+            marginLeft: "20%",
+            marginTop: "3%",
             marginRight: "20%",
-            fontWeight: "bold",
           }}
         >
-          {board.boardName}
-        </h1>
+          <h1 style={{ width: "max-content", fontWeight: "bold" }}>
+            {board.boardName}
+          </h1>{" "}
+        </div>
+
         {/* Setting et bouton suggérer */}
         <div
           className="icons-list"
@@ -137,7 +144,7 @@ const Board = (props) => {
               marginLeft: "50%",
             }}
           >
-            <BtnLink to="/idea-creation">Suggérer</BtnLink>
+            <BtnLink to="/idea-creation">Suggest</BtnLink>
           </Btn>
 
           <FacebookShareButton
@@ -166,18 +173,20 @@ const Board = (props) => {
           </EmailShareButton>
         </div>
       </div>
+      <div>
+        <h2
+          style={{
+            marginLeft: "20%",
+            marginRight: "300px",
+            fontSize: "15px",
+            color: "#343434",
+            fontWeight: "lighter",
+          }}
+        >
+          {board.boardDesc}
+        </h2>
+      </div>
 
-      <h2
-        style={{
-          marginLeft: "400px",
-          marginRight: "300px",
-          fontSize: "20px",
-          color: "grey",
-          fontWeight: "lighter",
-        }}
-      >
-        {board.boardDesc}
-      </h2>
       {/* 
 
 
