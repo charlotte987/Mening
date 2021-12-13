@@ -35,7 +35,7 @@ function App() {
           <Route path="/sign-up" element={<Login />} />
           <Route path="/create" element={<BoardCreation />} />
           <Route path="/idea-creation" element={<IdeaCreation />} />
-          <Route path="/board" element={<Board />} />
+          <Route path="/board/:id" element={<Board />} />
           <Route path="/account" element={<Account />} />
           <Route path="/account-settings" element={<AccountSettings />} />
         </Routes>

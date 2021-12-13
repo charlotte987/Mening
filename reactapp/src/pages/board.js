@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { List, Avatar, Space, Button } from "antd";
 import {
@@ -9,11 +9,29 @@ import {
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
-
+import { useParams } from "react-router-dom";
 import Background from "../images/banner.jpg";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+} from "react-share";
+import { FacebookIcon, TwitterIcon, EmailIcon } from "react-share";
 
 const Board = (props) => {
-  //compteur de like//
+  // Tableau d'idées//
+  const [board, setBoard] = useState([]);
+  var { id } = useParams();
+  // recuperation du board
+  useEffect(() => {
+    var findBoards = async () => {
+      var boards = await fetch(`/myboard/${id}`); // utilisation du param pour retrouver l'id du board
+      var body = await boards.json();
+      console.log(body.board[0], "LE BODY.ideaID");
+      setBoard(body.board[0]);
+    };
+    findBoards();
+  }, []);
 
   const like = async (Id) => {
     console.log(
@@ -90,8 +108,8 @@ const Board = (props) => {
             fontWeight: "bold",
           }}
         >
-          {props.infos.title}
-        </h1>{" "}
+          {board.boardName}
+        </h1>
         {/* Setting et bouton suggérer */}
         <div
           className="icons-list"
@@ -99,27 +117,53 @@ const Board = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            width: "100vw",
             marginLeft: "20%",
             marginRight: "50%",
           }}
         >
           <SettingOutlined
             style={{
-              width: "50px",
               cursor: "pointer",
-              marginTop: "10%",
-              marginRight: "10%",
+              marginTop: "6%",
+              marginRight: "5%",
+              marginLeft: "20%",
+              fontSize: "20px",
             }}
           />
           <Btn
             style={{
               cursor: "pointer",
               marginRight: "10%",
+              marginLeft: "50%",
             }}
           >
             <BtnLink to="/idea-creation">Suggérer</BtnLink>
           </Btn>
+
+          <FacebookShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+            style={{ marginTop: "5%" }}
+          >
+            <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+          </FacebookShareButton>
+          <TwitterShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+            style={{ marginLeft: "5%", marginTop: "5%" }}
+          >
+            <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
+          </TwitterShareButton>
+          <EmailShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+            style={{ marginLeft: "5%", marginTop: "5%" }}
+          >
+            <EmailIcon logoFillColor="white" round={true}></EmailIcon>
+          </EmailShareButton>
         </div>
       </div>
 
@@ -132,13 +176,13 @@ const Board = (props) => {
           fontWeight: "lighter",
         }}
       >
-        {props.infos.desc}
+        {board.boardDesc}
       </h2>
       {/* 
 
 
       {/* //liste d'idées et pictos// */}
-      {!props.ideaContent ? (
+      {!board.ideaId ? (
         <List></List>
       ) : (
         <List
@@ -150,7 +194,7 @@ const Board = (props) => {
             marginTop: "50px",
             marginRight: "300px",
           }}
-          dataSource={props.ideaContent}
+          dataSource={board.ideaId}
           renderItem={(item) => (
             <List.Item
               key={item.title}
@@ -177,7 +221,7 @@ const Board = (props) => {
                   type="text"
                   icon={<DeleteOutlined />}
                   size={32}
-                  onClick={() => deleteIdeaBbdStore(item.ideaId)}
+                  onClick={() => deleteIdeaBbdStore(item._id)}
                 ></Button>,
               ]}
             >
@@ -188,7 +232,7 @@ const Board = (props) => {
                     src={`https://eu.ui-avatars.com/api/?name=${props.user.username}&background=5b25c0&color=fff`}
                   />
                 }
-                title={item.title}
+                title={item.ideaName}
                 description={item.ideaDesc}
               ></List.Item.Meta>
             </List.Item>

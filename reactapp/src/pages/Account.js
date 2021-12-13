@@ -22,15 +22,13 @@ const Account = (props) => {
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [loading, setLoading] = useState(false);
   const [boardName, setBoardName] = useState([]);
-
+  //Recuperation des boards en DB pour les afficher dans la liste des boards de l'utilisateur
   useEffect(() => {
     var findBoards = async () => {
       var boards = await fetch(`/board/${props.token}`);
       var body = await boards.json();
       console.log(body);
-      setBoardName(body.boards);
-
-      console.log(body.boards, ":body.boards");
+      setBoardName(body.boards); // stockage des infos des boards de l'utilisateur dans l'etat boardName
     };
     findBoards();
   }, []);
@@ -97,7 +95,7 @@ const Account = (props) => {
               {boardName.map((board, i) => (
                 <p key={i} style={{ display: "flex", flexDirection: "row" }}>
                   <p style={{ marginRight: "20px" }}>
-                    <Link to="/board">{board.boardName}</Link>
+                    <Link to={`/board/${board._id}`}>{board.boardName}</Link>
                   </p>
                   <p>{board.boardDesc}</p>
                 </p>

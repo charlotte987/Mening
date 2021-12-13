@@ -93,7 +93,7 @@ router.post("/board-creation", async function (req, res, next) {
       userId: user._id,
     });
   }
-  console.log(newBoard);
+
   var saveBoard = await newBoard.save();
   if (saveBoard.title) {
     result = true;
@@ -101,18 +101,25 @@ router.post("/board-creation", async function (req, res, next) {
 
   res.json({ result, saveBoard });
 });
-
+// recuperation des boards d'un utilisateur avec le token
 router.get("/board/:token", async function (req, res, next) {
   var boards = [];
   var user = await userModel.findOne({ token: req.params.token });
-  console.log(req.params.token, ":token utilisateur");
 
   if (user != null) {
     boards = await boardModel.find({ userId: user._id });
   }
-  console.log(boards, "les boards");
 
   res.json({ boards });
+});
+// recuperation d'un board avec son id
+router.get("/myboard/:id", async function (req, res, next) {
+  var board = await boardModel
+    .find({ _id: req.params.id })
+    .populate("ideaId")
+    .exec();
+
+  res.json({ board });
 });
 
 // creation de l'idée
@@ -129,12 +136,11 @@ router.post("/idea-creation", async function (req, res, next) {
       userId: user._id,
     });
   }
-  console.log(req.body, "test reqbody");
+
   var saveIdea = await newIdea.save();
   var board = await boardModel.findOne({ _id: req.body.boardId }); //recuperation de l'id du board sur lequel on crée l'idée
   if (saveIdea.ideaName) {
-    console.log(board, "test board");
-    board.ideaId.push(saveIdea._id); //push l'id de l'idée dans le tableau de clé étrangère ideaId du board
+    board.ideaId.push(saveIdea); //push de l'idée dans le tableau de clé étrangère ideaId du board
     board.save();
     result = true;
   }
@@ -144,11 +150,10 @@ router.post("/idea-creation", async function (req, res, next) {
 //suppresion d'une idée
 router.delete("/delete-idea/:ideaId", async function (req, res, next) {
   var deleteIdea = await ideaModel.deleteOne({ _id: req.params.ideaId });
-
+  console.log(deleteIdea);
   var resultTestId = false;
   if (deleteIdea === 1) {
     resultTestId = true;
-    console.log(resultTestId);
   }
 
   res.json({ result });
