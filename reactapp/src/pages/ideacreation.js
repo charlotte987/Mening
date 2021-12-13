@@ -12,6 +12,8 @@ const IdeaCreation = (props) => {
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
   const [check, setCheck] = useState(false); //etat permettant de redirect vers /board/boardId à la création de l'idée
   const [boardId, setBoardId] = useState("");
+  const [likes, setLikes] = useState(0);
+  const [voteCount, setVoteCount] = useState(0);
 
   useEffect(() => {
     var findBoards = async () => {
@@ -28,11 +30,11 @@ const IdeaCreation = (props) => {
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${boardId}`,
+      body: `idea=${idea}&ideaDesc=${ideaDescription}&token=${props.token}&boardId=${boardId}&likesFromFront=${likes}&voteCountFromFront=${voteCount}`,
     });
 
     var response = await save.json();
-    console.log(response, "test response");
+
     props.onAddIdeaClick(
       idea,
       ideaDescription,
@@ -61,7 +63,7 @@ const IdeaCreation = (props) => {
         }}
       >
         <Form.Item name="ideaName">
-          <h1 style={{ fontSize: "30px" }}>Nom de l'idée</h1>
+          <h1 style={{ fontSize: "30px" }}>Name of the idea</h1>
 
           <Input
             style={{ width: "500px" }}
@@ -72,7 +74,7 @@ const IdeaCreation = (props) => {
         </Form.Item>
 
         <Form.Item name="descIdea">
-          <h1 style={{ fontSize: "30px" }}>Description de l'idée</h1>
+          <h1 style={{ fontSize: "30px" }}>Idea Description</h1>
 
           <TextArea
             style={{ width: "750px" }}
