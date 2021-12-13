@@ -22,6 +22,7 @@ const Board = (props) => {
   // Tableau d'idées//
   const [board, setBoard] = useState([]);
   var { id } = useParams();
+
   // recuperation du board
   useEffect(() => {
     var findBoards = async () => {
@@ -34,11 +35,6 @@ const Board = (props) => {
   }, []);
 
   const like = async (Id) => {
-    console.log(
-      Id,
-      "test de réception des likes et vote du store sur le board"
-    );
-
     props.like(Id);
 
     var save = await fetch(`/idea-modification/${Id}`, {
@@ -48,8 +44,7 @@ const Board = (props) => {
     });
 
     var responseUpdateLike = await save.json();
-
-    console.log(responseUpdateLike, "test de l'enregistrement de vote en BDD");
+    setBoard(responseUpdateLike.searchBoardCompteur);
   };
 
   const dislike = async (Id) => {
@@ -62,11 +57,7 @@ const Board = (props) => {
     });
 
     var responseUpdateDisLike = await save.json();
-
-    console.log(
-      responseUpdateDisLike,
-      "test de l'enregistrement de vote en BDD"
-    );
+    setBoard(responseUpdateDisLike.searchBoardCompteur);
   };
 
   // Tableau d'idées//
@@ -77,6 +68,9 @@ const Board = (props) => {
     const response = await fetch(`/delete-idea/${ideaId}`, {
       method: "DELETE",
     });
+    var responseDeleteIdea = await response.json();
+
+    setBoard(responseDeleteIdea.modifyIdeaOnBoard);
   };
 
   return (
@@ -206,25 +200,25 @@ const Board = (props) => {
           dataSource={board.ideaId}
           renderItem={(item) => (
             <List.Item
-              key={item.title}
+              key={item.ideaName}
               actions={[
                 <Button
                   type="text"
                   icon={<CaretUpOutlined />}
                   size={32}
-                  onClick={() => like(item.ideaId)}
+                  onClick={() => like(item._id)}
                 ></Button>,
                 <Button
                   type="text"
                   icon={<CaretDownOutlined />}
                   size={32}
                   onClick={() => {
-                    dislike(item.ideaId);
+                    dislike(item._id);
                   }}
                 ></Button>,
                 <p>
                   {" "}
-                  {item.likes} out of {item.voteCount} voting{" "}
+                  {item.likes} likes out of {item.voteCount} voting{" "}
                 </p>,
                 <Button
                   type="text"

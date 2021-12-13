@@ -93,7 +93,7 @@ router.post("/board-creation", async function (req, res, next) {
       userId: user._id,
     });
   }
-  console.log(newBoard);
+
   var saveBoard = await newBoard.save();
   if (saveBoard.title) {
     result = true;
@@ -114,7 +114,6 @@ router.get("/board/:token", async function (req, res, next) {
 
   res.json({ boards });
 });
-<<<<<<< HEAD
 // recuperation d'un board avec son id et recuperer tout le contenu de la clé étrangere ideaId
 router.get("/myboard/:id", async function (req, res, next) {
   var board = await boardModel
@@ -124,8 +123,6 @@ router.get("/myboard/:id", async function (req, res, next) {
 
   res.json({ board });
 });
-=======
->>>>>>> aa678f32fde1ba6436b7260be3fca4c2850aa0d0
 
 // creation de l'idée
 router.post("/idea-creation", async function (req, res, next) {
@@ -158,19 +155,21 @@ router.post("/idea-creation", async function (req, res, next) {
 router.delete("/delete-idea/:ideaId", async function (req, res, next) {
   var deleteIdea = await ideaModel.deleteOne({ _id: req.params.ideaId });
 
-  var resultTestId = false;
-  if (deleteIdea === 1) {
-    resultTestId = true;
-    console.log(resultTestId);
-  }
+  var modifyIdeaOnBoard = await boardModel
+    .findOneAndUpdate(
+      { ideaId: { $in: { _id: req.params.ideaId } } },
+      { $pull: { ideaId: req.params.ideaId } },
+      { new: true }
+    )
+    .populate("ideaId");
 
-  res.json({ result });
+  res.json({ modifyIdeaOnBoard });
 });
 
+//compteur de vote//
 router.put("/idea-modification/:Id", async function (req, res, next) {
-  console.log("route modification", req.params, req.body);
   var searchIdea = await ideaModel.findOne({ _id: req.params.Id });
-  console.log("trouvé");
+
   var result = false;
   if (searchIdea && req.body.action == "like") {
     searchIdea.likes = searchIdea.likes + 1;
@@ -185,10 +184,13 @@ router.put("/idea-modification/:Id", async function (req, res, next) {
     result = true;
   }
 
-  console.log(searchIdea, "searchIdea");
-  var ideas = await ideaModel.find();
+  var searchBoardCompteur = await boardModel
+    .findOne({
+      ideaId: { $in: { _id: req.params.Id } },
+    })
+    .populate("ideaId");
 
-  res.json({ result, ideas });
+  res.json({ result, searchBoardCompteur });
 });
 
 module.exports = router;
