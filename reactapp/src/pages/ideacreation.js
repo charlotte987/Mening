@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input } from "antd";
 import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
 // import Navbar from "../components/Navbar";
@@ -11,6 +11,17 @@ const IdeaCreation = (props) => {
   const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
   const [check, setCheck] = useState(false); //etat permettant de redirect vers /board/boardId à la création de l'idée
+  const [boardId, setBoardId] = useState("");
+
+  useEffect(() => {
+    var findBoards = async () => {
+      var boards = await fetch(`/board/${props.token}`);
+      var body = await boards.json();
+      console.log(body);
+      setBoardId(body.boards._id);
+    };
+    findBoards();
+  }, []);
 
   //Creation de l'idée en DB
   var saveIdea = async (idea, ideaDescription) => {
