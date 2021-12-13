@@ -9,7 +9,6 @@ import {
   SettingOutlined,
   ContainerOutlined,
   LogoutOutlined,
-  PlayCircleOutlined,
 } from "@ant-design/icons";
 
 import { connect } from "react-redux";
@@ -166,9 +165,6 @@ const Account = (props) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // addToken: function (token) {
-    //   dispatch({ type: "addToken", token: token });
-    // },
     setIsLoggedOut: function () {
       dispatch({ type: "setIsLoggedOut" });
     },
