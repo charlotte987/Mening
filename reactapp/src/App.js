@@ -34,7 +34,7 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/sign-up" element={<Login />} />
           <Route path="/create" element={<BoardCreation />} />
-          <Route path="/idea-creation" element={<IdeaCreation />} />
+          <Route path="/idea-creation/:id" element={<IdeaCreation />} />
           <Route path="/board/:id" element={<Board />} />
           <Route path="/account" element={<Account />} />
           <Route path="/account-settings" element={<AccountSettings />} />

@@ -4,27 +4,28 @@ import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
 // import Navbar from "../components/Navbar";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
-
+import { useParams } from "react-router-dom";
 const { TextArea } = Input;
 
 const IdeaCreation = (props) => {
   const [idea, setIdea] = useState(""); //enregistrement du titre de l'idée dans le store et BDD
   const [ideaDescription, setIdeaDescription] = useState(""); //enregistrement de la description de l'idée dans le store et BDD
   const [check, setCheck] = useState(false); //etat permettant de redirect vers /board/boardId à la création de l'idée
-  const [boardId, setBoardId] = useState("");
-
+  const [boardId, setBoardId] = useState(""); //Recuperation de l'id du board sur lequel on souhaite créer l'idée
+  var { id } = useParams();
   useEffect(() => {
     var findBoards = async () => {
-      var boards = await fetch(`/board/${props.token}`);
+      var boards = await fetch(`/myboard/${id}`); // utilisation du param pour retrouver l'id du board
       var body = await boards.json();
-      console.log(body.boards[0]._id, "infos de mon board");
-      setBoardId(body.boards[0]._id);
+      console.log(body.board[0], "LE BODY.board");
+      setBoardId(body.board[0]._id);
     };
     findBoards();
   }, []);
 
   //Creation de l'idée en DB
   var saveIdea = async (idea, ideaDescription) => {
+    console.log(boardId, ideaDescription, props.token, idea);
     var save = await fetch("/idea-creation", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

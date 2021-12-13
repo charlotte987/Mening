@@ -27,7 +27,7 @@ const Board = (props) => {
     var findBoards = async () => {
       var boards = await fetch(`/myboard/${id}`); // utilisation du param pour retrouver l'id du board
       var body = await boards.json();
-      console.log(body.board[0], "LE BODY.ideaID");
+      console.log(body.board[0], "LE BODY.board");
       setBoard(body.board[0]);
     };
     findBoards();
@@ -144,7 +144,7 @@ const Board = (props) => {
               marginLeft: "50%",
             }}
           >
-            <BtnLink to="/idea-creation">Suggest</BtnLink>
+            <BtnLink to={`/idea-creation/${id}`}>Suggest</BtnLink>
           </Btn>
 
           <FacebookShareButton
