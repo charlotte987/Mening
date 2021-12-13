@@ -13,7 +13,6 @@ const IdeaCreation = (props) => {
   const [check, setCheck] = useState(false); //etat permettant de redirect vers /board/boardId à la création de l'idée
   const [boardId, setBoardId] = useState(""); //Recuperation de l'id du board sur lequel on souhaite créer l'idée
   var { id } = useParams();
-  const [boardId, setBoardId] = useState("");
   const [likes, setLikes] = useState(0);
   const [voteCount, setVoteCount] = useState(0);
 
