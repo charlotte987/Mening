@@ -92,10 +92,11 @@ const Board = (props) => {
             marginLeft: "20%",
             marginTop: "3%",
             marginRight: "20%",
-            fontWeight: "bold",
           }}
         >
-          <h1>{props.infos.title}</h1>{" "}
+          <h1 style={{ width: "max-content", fontWeight: "bold" }}>
+            {props.infos.title}
+          </h1>{" "}
         </div>
 
         {/* Setting et bouton suggérer */}
