@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input } from "antd";
-import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
+import { Form, Input, Button } from "antd";
+import { HeroDiv } from "../styles/StyledContent";
 // import Navbar from "../components/Navbar";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -84,22 +84,10 @@ const IdeaCreation = (props) => {
           />
         </Form.Item>
 
-        <Btn
-          onClick={() => saveIdea(idea, ideaDescription)}
-          style={{
-            cursor: "pointer",
-            borderRadius: "4px",
-            background: "#5b25c0",
-            padding: "10px 22px",
-            marginTop: "15px",
-            color: "#fff",
-            outline: "none",
-            border: "none",
-          }}
-        >
+        <Button onClick={() => saveIdea(idea, ideaDescription)}>
           Create
           {/* <BtnLink to="/board">Create</BtnLink> */}
-        </Btn>
+        </Button>
       </Form>
     </HeroDiv>
   );
