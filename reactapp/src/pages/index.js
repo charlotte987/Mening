@@ -10,6 +10,7 @@ import {
   DivTitle,
   Feature,
   Line,
+  Cards,
 } from "../styles/StyledContent";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
@@ -29,7 +30,9 @@ const Home = () => {
             your users.
           </Subtitle>
           <Btn>
-            <BtnLink to="/signin">See an example</BtnLink>
+            <BtnLink to="/board/61b87a8d4d2558fa03707a1c">
+              See an example
+            </BtnLink>
           </Btn>
         </HeroLeft>
 
@@ -42,43 +45,42 @@ const Home = () => {
           <div className="site-card-wrapper">
             <Row gutter={16}>
               <Col span={8}>
-                <Card title="Share ideas, vote and discuss 💡" bordered={true}>
+                <Cards title="Share ideas, vote and discuss 💡" bordered={true}>
                   Give voice to your community, get valuable suggestions and
                   prioritize what they need the most.
-                </Card>
+                </Cards>
               </Col>
               <Col span={8}>
-                <Card title="Your Brand 🎨" bordered={true}>
+                <Cards title="Your Brand 🎨" bordered={true}>
                   Reflect your brand and personality by adding your company's
-                  logo, using a domain you already own and changing the theme
-                  colors.
-                </Card>
+                  logo and changing the theme colors.
+                </Cards>
               </Col>
               <Col span={8}>
-                <Card title="Board privacy 🕵️" bordered={true}>
+                <Cards title="Board privacy 🕵️" bordered={true}>
                   Your feedback board can be public or limited to specific
                   users. Select the privacy setting that best suits your needs.
-                </Card>
+                </Cards>
               </Col>
             </Row>
           </div>
           <div className="site-card-wrapper">
             <Line gutter={16}>
               <Col span={8}>
-                <Card title="Mobile-friendly 📲" bordered={true}>
+                <Cards title="Mobile-friendly 📲" bordered={true}>
                   Your board is mobile-friendly from the ground up so you can
                   browse feedback on the go..
-                </Card>
+                </Cards>
               </Col>
               <Col span={8}>
-                <Card title="User profiles 😀" bordered={true}>
+                <Cards title="User profiles 😀" bordered={true}>
                   Let users change their photo and personal information.
-                </Card>
+                </Cards>
               </Col>
               <Col span={8}>
-                <Feature title="And more ! ❤️" bordered={false}>
+                <Cards title="And more ! ❤️" bordered={false}>
                   We look forward to your recommendations for future features.
-                </Feature>
+                </Cards>
               </Col>
             </Line>
           </div>

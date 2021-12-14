@@ -6,13 +6,11 @@ import { Profile, Div, Body, Input, Image } from "../styles/StyledAccount";
 import { Card, Avatar, Modal, Button } from "antd";
 import {
   PlusOutlined,
-  SettingOutlined,
   ContainerOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 
 import { connect } from "react-redux";
-import { BtnLink } from "../styles/StyledContent";
 
 const { Meta } = Card;
 
@@ -40,9 +38,9 @@ const Account = (props) => {
     setIsModalVisible(true);
   };
 
-  const showModal2 = () => {
-    setIsModalVisible2(true);
-  };
+  // const showModal2 = () => {
+  //   setIsModalVisible2(true);
+  // };
 
   const handleOk = () => {
     setIsModalVisible2(false);
@@ -70,7 +68,7 @@ const Account = (props) => {
         <div style={{ paddingBottom: "55px" }}>
           <Profile
             actions={[
-              <SettingOutlined key="setting" onClick={showModal2} />,
+              // <SettingOutlined key="setting" onClick={showModal2} />,
               <Link to="/create">
                 <PlusOutlined key="create" />
               </Link>,
@@ -100,7 +98,7 @@ const Account = (props) => {
                 </p>
               ))}
             </Modal>
-            <Modal
+            {/* <Modal
               visible={isModalVisible2}
               title="Settings"
               onCancel={handleCancel2}
@@ -143,7 +141,7 @@ const Account = (props) => {
                   size="10"
                 ></Input>
               </div>
-            </Modal>
+            </Modal> */}
             <Meta
               avatar={
                 <Avatar
