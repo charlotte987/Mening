@@ -29,7 +29,15 @@ const BoardCreation = (props) => {
     return <Navigate to={`/board/${boardId}`} />;
   }
   return (
-    <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
+    <HeroDiv
+      style={{
+        paddingLeft: "400px",
+        paddingTop: "150px",
+        paddingBottom: "150px",
+        backgroundColor: "#F6F6F6",
+        height: "100vh",
+      }}
+    >
       <Form
         name="basic"
         labelCol={{
@@ -43,10 +51,8 @@ const BoardCreation = (props) => {
         }}
       >
         <Form.Item name="boardName">
-          <h1 style={{ fontSize: "30px" }}>Choose a board name</h1>
-          <h6 style={{ color: "grey", fontSize: "20px" }}>
-            You can change it later
-          </h6>
+          <h1 style={{ fontSize: "25px" }}>Choose a board name</h1>
+          <h4 style={{ color: "grey" }}>You can change it later</h4>
           <Input
             style={{ width: "500px" }}
             name="boardTitle"
@@ -55,10 +61,8 @@ const BoardCreation = (props) => {
         </Form.Item>
 
         <Form.Item name="descBoard">
-          <h1 style={{ fontSize: "30px" }}>A quick description ?</h1>
-          <h6 style={{ color: "grey", fontSize: "20px" }}>
-            Up to 80 charactères
-          </h6>
+          <h1 style={{ fontSize: "25px" }}>A quick description ?</h1>
+          <h4 style={{ color: "grey" }}>Up to 80 charactères</h4>
           <TextArea
             style={{ width: "750px" }}
             name="boardDesc"

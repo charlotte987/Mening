@@ -51,7 +51,15 @@ const IdeaCreation = (props) => {
     return <Navigate to={`/board/${boardId}`} />;
   }
   return (
-    <HeroDiv style={{ paddingLeft: "400px", paddingTop: "150px" }}>
+    <HeroDiv
+      style={{
+        paddingLeft: "400px",
+        paddingTop: "150px",
+        paddingBottom: "150px",
+        backgroundColor: "#F6F6F6",
+        height: "100vh",
+      }}
+    >
       <Form
         name="basic"
         labelCol={{
@@ -65,7 +73,7 @@ const IdeaCreation = (props) => {
         }}
       >
         <Form.Item name="ideaName">
-          <h1 style={{ fontSize: "30px" }}>Name of the idea</h1>
+          <h1 style={{ fontSize: "25px" }}>Name of the idea</h1>
 
           <Input
             style={{ width: "500px" }}
@@ -76,7 +84,7 @@ const IdeaCreation = (props) => {
         </Form.Item>
 
         <Form.Item name="descIdea">
-          <h1 style={{ fontSize: "30px" }}>Idea Description</h1>
+          <h1 style={{ fontSize: "25px" }}>Idea Description</h1>
 
           <TextArea
             style={{ width: "750px" }}

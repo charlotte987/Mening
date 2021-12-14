@@ -56,7 +56,7 @@ function Login(props) {
   };
 
   if (userExists) {
-    return <Navigate to="/" />;
+    return <Navigate to="/account" />;
   }
 
   var tabErrorsSignin = listErrorsSignin.map((error, i) => {

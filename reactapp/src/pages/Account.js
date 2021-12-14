@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { Profile, Div, Body, Input, Image } from "../styles/StyledAccount";
+import { Profile, Div, Body, Image } from "../styles/StyledAccount";
 
 import { Card, Avatar, Modal, Button } from "antd";
 import {
@@ -17,7 +17,7 @@ const { Meta } = Card;
 const Account = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
-  const [loading, setLoading] = useState(false);
+
   const [boardName, setBoardName] = useState([]);
   //Recuperation des boards en DB pour les afficher dans la liste des boards de l'utilisateur
   useEffect(() => {
@@ -38,24 +38,8 @@ const Account = (props) => {
     setIsModalVisible(true);
   };
 
-  // const showModal2 = () => {
-  //   setIsModalVisible2(true);
-  // };
-
-  const handleOk = () => {
-    setIsModalVisible2(false);
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  };
-
   const handleCancel = () => {
     setIsModalVisible(false);
-  };
-
-  const handleCancel2 = () => {
-    setIsModalVisible2(false);
   };
 
   const logout = () => {
@@ -98,50 +82,7 @@ const Account = (props) => {
                 </p>
               ))}
             </Modal>
-            {/* <Modal
-              visible={isModalVisible2}
-              title="Settings"
-              onCancel={handleCancel2}
-              footer={[
-                <Button key="back" onClick={handleCancel2}>
-                  Close
-                </Button>,
-                <Button
-                  key="link"
-                  href="/account"
-                  type="primary"
-                  loading={loading}
-                  onClick={handleOk}
-                >
-                  Submit
-                </Button>,
-              ]}
-            >
-              <div>
-                <label for="name">Username</label>
-                <Input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  minlength="6"
-                  maxlength="20"
-                  size="10"
-                ></Input>
-              </div>
-              <div>
-                <label for="email">Email Address</label>
-                <Input
-                  type="text"
-                  id="email"
-                  name="email"
-                  required
-                  minlength="6"
-                  maxlength="20"
-                  size="10"
-                ></Input>
-              </div>
-            </Modal> */}
+
             <Meta
               avatar={
                 <Avatar
