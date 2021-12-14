@@ -89,10 +89,15 @@ export const featureDiv = styled.div``;
 
 // Ant-Design
 
-export const Feature = styled(Card)`
-  box-shadow: 0.5px 0.5px 1px 1px #8247e5;
-  border-radius: 10px;
-  border-color: #8247e5;
+export const Cards = styled(Card)`
+  height: 174px;
+  margin-top: 10px;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #e7d9ff;
+    color: #010606;
+  }
 `;
 
 export const Line = styled(Row)`

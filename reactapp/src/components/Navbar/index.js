@@ -22,9 +22,7 @@ const Navbar = (props) => {
           <NavLink to="/about" activeStyle>
             About
           </NavLink>
-          <NavLink to="/pricing" activeStyle>
-            Pricing
-          </NavLink>
+
           {props.isLoggedIn ? (
             <NavLink to="/account" activeStyle>
               Account
@@ -35,9 +33,15 @@ const Navbar = (props) => {
             </NavLink>
           )}
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/create">Create a board</NavBtnLink>
-        </NavBtn>
+        {props.isLoggedIn ? (
+          <NavBtn>
+            <NavBtnLink to="/create">Create a board</NavBtnLink>
+          </NavBtn>
+        ) : (
+          <NavBtn>
+            <NavBtnLink to="/sign-up">Create a board</NavBtnLink>
+          </NavBtn>
+        )}
       </Nav>
     </>
   );
