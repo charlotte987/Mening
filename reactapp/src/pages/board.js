@@ -137,9 +137,7 @@ const Board = (props) => {
               marginRight: "10%",
               marginLeft: "50%",
             }}
-          >
-            <BtnLink to={`/idea-creation/${id}`}>Suggest</BtnLink>
-          </Btn>
+          ></Btn>
 
           <FacebookShareButton
             url="https://youtube.com/"
