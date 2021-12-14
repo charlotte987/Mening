@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Switch } from "antd";
-import { HeroDiv, Btn, BtnLink } from "../styles/StyledContent";
+import { Form, Input, Button } from "antd";
+import { HeroDiv } from "../styles/StyledContent";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 
@@ -65,30 +65,12 @@ const BoardCreation = (props) => {
             onChange={(e) => setDesc(e.target.value)}
           />
         </Form.Item>
-        <Form.Item
-          label="Premium"
-          valuePropName="checked"
-          tooltip="Activer le premium"
-        >
-          <Switch />
-        </Form.Item>
-        <Btn
-          style={{
-            cursor: "pointer",
-            borderRadius: "4px",
-            background: "#5b25c0",
-            padding: "10px 22px",
-            marginTop: "15px",
-            color: "#fff",
-            outline: "none",
-            border: "none",
-          }}
-          onClick={() => saveBoardInfos(title, desc)}
-        >
+
+        <Button onClick={() => saveBoardInfos(title, desc)}>
           {" "}
           Create
           {/* <BtnLink to={`/board/${boardId}`}>Create</BtnLink> */}
-        </Btn>
+        </Button>
       </Form>
     </HeroDiv>
   );

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import { List, Avatar, Button } from "antd";
+import { List, Avatar, Button, Modal } from "antd";
 import {
   CaretUpOutlined,
-  SettingOutlined,
+  ShareAltOutlined,
   DeleteOutlined,
   CaretDownOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Background from "../images/banner.jpg";
 import {
   FacebookShareButton,
@@ -19,6 +19,7 @@ import {
 import { FacebookIcon, TwitterIcon, EmailIcon } from "react-share";
 
 const Board = (props) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   // Tableau d'idées//
   const [board, setBoard] = useState([]);
   var { id } = useParams();
@@ -73,6 +74,14 @@ const Board = (props) => {
     setBoard(responseDeleteIdea.modifyIdeaOnBoard);
   };
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     //bannière et photo de profile//
     <div>
@@ -85,7 +94,13 @@ const Board = (props) => {
           backgroundSize: "cover",
         }}
       >
-        <img
+        {" "}
+        <Link to="/" style={{ color: "#313131", fontWeight: "bold" }}>
+          <h4>
+            <i>Powered by Mening</i>
+          </h4>
+        </Link>
+        {/* <img
           src={require("../images/logolacapsule.png")}
           alt="icon"
           style={{
@@ -94,7 +109,7 @@ const Board = (props) => {
             marginLeft: "10rem",
             marginTop: "12%",
           }}
-        ></img>
+        ></img> */}
       </div>
 
       {/* //Titre et Description// */}
@@ -102,7 +117,7 @@ const Board = (props) => {
         <div
           style={{
             marginLeft: "20%",
-            marginTop: "3%",
+            marginTop: "2%",
             marginRight: "20%",
           }}
         >
@@ -116,55 +131,28 @@ const Board = (props) => {
           className="icons-list"
           style={{
             display: "flex",
-            flexDirection: "row",
             alignItems: "center",
             marginLeft: "20%",
-            marginRight: "50%",
           }}
         >
-          <SettingOutlined
+          <ShareAltOutlined
             style={{
               cursor: "pointer",
-              marginTop: "6%",
-              marginRight: "5%",
+              marginTop: "18%",
               marginLeft: "20%",
               fontSize: "20px",
             }}
+            onClick={showModal}
           />
           <Btn
             style={{
               cursor: "pointer",
               marginRight: "10%",
-              marginLeft: "50%",
+              marginLeft: "10%",
             }}
           >
             <BtnLink to={`/idea-creation/${id}`}>Suggest</BtnLink>
           </Btn>
-
-          <FacebookShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
-            hashtag="#React"
-            style={{ marginTop: "5%" }}
-          >
-            <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
-          </FacebookShareButton>
-          <TwitterShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
-            hashtag="#React"
-            style={{ marginLeft: "5%", marginTop: "5%" }}
-          >
-            <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
-          </TwitterShareButton>
-          <EmailShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
-            hashtag="#React"
-            style={{ marginLeft: "5%", marginTop: "5%" }}
-          >
-            <EmailIcon logoFillColor="white" round={true}></EmailIcon>
-          </EmailShareButton>
         </div>
       </div>
       <div>
@@ -242,6 +230,43 @@ const Board = (props) => {
           )}
         />
       )}
+      <Modal
+        visible={isModalVisible}
+        title="Share on:"
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Close
+          </Button>,
+        ]}
+      >
+        <div>
+          <FacebookShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+            style={{ marginTop: "5%" }}
+          >
+            <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+          </FacebookShareButton>
+          <TwitterShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+            style={{ marginTop: "5%" }}
+          >
+            <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
+          </TwitterShareButton>
+          <EmailShareButton
+            url="https://youtube.com/"
+            quote={"Abonne toi!"}
+            hashtag="#React"
+            style={{ marginTop: "5%" }}
+          >
+            <EmailIcon logoFillColor="white" round={true}></EmailIcon>
+          </EmailShareButton>
+        </div>
+      </Modal>
     </div>
   );
 };
