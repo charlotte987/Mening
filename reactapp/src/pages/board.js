@@ -121,16 +121,16 @@ const Board = (props) => {
             <i>Powered by Mening</i>
           </h4>
         </Link>
-        {/* <img
+        <img
           src={require("../images/logolacapsule.png")}
           alt="icon"
           style={{
             width: "95px",
             borderRadius: "5rem",
-            marginLeft: "10rem",
-            marginTop: "12%",
+            marginLeft: "15rem",
+            marginTop: "10%",
           }}
-        ></img> */}
+        ></img>
       </div>
 
       {/* //Titre et Description// */}
