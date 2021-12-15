@@ -7,6 +7,7 @@ import {
   DeleteOutlined,
   CaretDownOutlined,
   FilterOutlined,
+  LeftCircleOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
@@ -116,11 +117,19 @@ const Board = (props) => {
         }}
       >
         {" "}
-        <Link to="/" style={{ color: "#313131", fontWeight: "bold" }}>
-          <h4>
-            <i>Powered by Mening</i>
-          </h4>
-        </Link>
+        <div
+          style={{
+            fontSize: "25px",
+            marginLeft: "60px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Link to="/">
+            <LeftCircleOutlined />
+          </Link>
+        </div>
         <img
           src={require("../images/logolacapsule.png")}
           alt="icon"

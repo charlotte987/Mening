@@ -47,18 +47,33 @@ const Account = (props) => {
   };
 
   return (
-    <Body>
-      <Div>
-        <div style={{ paddingBottom: "55px" }}>
+    <Body className="Account-page">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: "19%",
+        }}
+      >
+        <div>
           <Profile
+            style={{
+              width: "200%",
+              borderRadius: "2%",
+            }}
             actions={[
               // <SettingOutlined key="setting" onClick={showModal2} />,
               <Link to="/create">
-                <PlusOutlined key="create" />
+                Create a board <PlusOutlined key="create" />
               </Link>,
-              <ContainerOutlined key="board" onClick={showModal} />,
+              <p onClick={showModal}>
+                {" "}
+                My Boards
+                <ContainerOutlined key="board" onClick={showModal} />{" "}
+              </p>,
 
               <Link to="/">
+                Logout
                 <LogoutOutlined key="logout" onClick={logout} />
               </Link>,
             ]}
@@ -95,7 +110,7 @@ const Account = (props) => {
           </Profile>
         </div>
         <Image src={require("../images/profile.svg")} alt="profile" />
-      </Div>
+      </div>
     </Body>
   );
 };

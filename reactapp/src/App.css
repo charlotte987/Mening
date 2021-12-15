@@ -20,6 +20,13 @@
   background-size: cover;
   background-image: url("./images/bglogin.svg"), url("./images/doodle.svg");
 }
+.Account-page {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./images/bgaccount.svg"),
+    url("./images/bgaccount2.svg");
+}
 
 .Index-page {
   background-position: center;
