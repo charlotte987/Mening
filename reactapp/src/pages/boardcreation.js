@@ -30,6 +30,7 @@ const BoardCreation = (props) => {
   }
   return (
     <HeroDiv
+      className="Board-creation"
       style={{
         paddingLeft: "400px",
         paddingTop: "150px",

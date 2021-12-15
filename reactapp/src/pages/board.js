@@ -105,7 +105,7 @@ const Board = (props) => {
 
   return (
     //bannière et photo de profile//
-    <div>
+    <div className="Board" style={{ height: "120vh" }}>
       <div
         style={{
           height: "200px",
