@@ -131,7 +131,7 @@ const Board = (props) => {
           </Link>
         </div>
         <img
-          src={require("../images/logolacapsule.png")}
+          src={require("../images/logo.svg")}
           alt="icon"
           style={{
             width: "95px",
@@ -283,24 +283,24 @@ const Board = (props) => {
       >
         <div>
           <FacebookShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
+            url={`https://mening-app.herokuapp.com/board/${id}`}
+            quote={"An idea ?"}
             hashtag="#React"
             style={{ marginTop: "5%" }}
           >
             <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
           </FacebookShareButton>
           <TwitterShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
+            url={`https://mening-app.herokuapp.com/board/${id}`}
+            quote={"An idea ?"}
             hashtag="#React"
             style={{ marginTop: "5%" }}
           >
             <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
           </TwitterShareButton>
           <EmailShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
+            url={`https://mening-app.herokuapp.com/board/${id}`}
+            quote={"An idea ?"}
             hashtag="#React"
             style={{ marginTop: "5%" }}
           >

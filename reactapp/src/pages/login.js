@@ -89,14 +89,7 @@ function Login(props) {
 
           {tabErrorsSignin}
 
-          <Button
-            onClick={() => handleSubmitSignin()}
-            style={{
-              width: "80px",
-            }}
-          >
-            Sign-in
-          </Button>
+          <Button onClick={() => handleSubmitSignin()}>Sign-in</Button>
         </div>
 
         {/* SIGN-UP */}
@@ -124,11 +117,7 @@ function Login(props) {
 
           {tabErrorsSignup}
 
-          <Button
-            onClick={() => handleSubmitSignup()}
-            style={{ width: "80px" }}
-            type="primary"
-          >
+          <Button onClick={() => handleSubmitSignup()} type="primary">
             Sign-up
           </Button>
         </div>
