@@ -370,13 +370,19 @@ router.put("/idea-modification/:Id", async function (req, res, next) {
   var result = false;
   if (searchIdea && req.body.action == "like") {
     searchIdea.likes = searchIdea.likes + 1;
-    searchIdea.voteCount = searchIdea.voteCount + 1;
+
+    if (req.body.alreadyVoted == 0) {
+      searchIdea.voteCount = searchIdea.voteCount + 1;
+    }
     await searchIdea.save();
     result = true;
   }
   if (searchIdea && req.body.action == "dislike") {
     searchIdea.likes = searchIdea.likes - 1;
-    searchIdea.voteCount = searchIdea.voteCount + 1;
+
+    if (req.body.alreadyVoted == 0) {
+      searchIdea.voteCount = searchIdea.voteCount + 1;
+    }
     await searchIdea.save();
     result = true;
   }
