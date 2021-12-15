@@ -18,7 +18,27 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./images/doodle.svg");
+  background-image: url("./images/bglogin.svg"), url("./images/doodle.svg");
+}
+
+.Index-page {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./images/flux.svg");
+}
+
+.Board-creation {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./images/bgboardcreation.svg");
+}
+.Idea-creation {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./images/bgideascreation.svg");
 }
 
 .Login-input {

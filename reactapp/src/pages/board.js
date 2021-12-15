@@ -6,6 +6,7 @@ import {
   ShareAltOutlined,
   DeleteOutlined,
   CaretDownOutlined,
+  FilterOutlined,
 } from "@ant-design/icons";
 import { Btn, BtnLink } from "../styles/StyledContent";
 import { connect } from "react-redux";
@@ -23,6 +24,8 @@ const Board = (props) => {
   // Tableau d'idées//
   const [board, setBoard] = useState([]);
   var { id } = useParams();
+  //Ne pouvoir voter qu'une fois//
+  const [alreadyVoted, setAlreadyVoted] = useState(0);
 
   // recuperation du board
   useEffect(() => {
@@ -35,33 +38,42 @@ const Board = (props) => {
     findBoards();
   }, []);
 
+  //compteur de vote//
   const like = async (Id) => {
     props.like(Id);
+    if (alreadyVoted == 0 || alreadyVoted == -1) {
+      var save = await fetch(`/idea-modification/${Id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `action=like&alreadyVoted=${alreadyVoted}`,
+      });
 
-    var save = await fetch(`/idea-modification/${Id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `action=like`,
-    });
-
-    var responseUpdateLike = await save.json();
-    setBoard(responseUpdateLike.searchBoardCompteur);
+      var responseUpdateLike = await save.json();
+      setBoard(responseUpdateLike.searchBoardCompteur);
+      setAlreadyVoted(alreadyVoted + 1);
+    }
   };
 
   const dislike = async (Id) => {
     props.dislike(Id);
+    if (alreadyVoted == 0 || alreadyVoted == 1) {
+      var save = await fetch(`/idea-modification/${Id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `action=dislike&alreadyVoted=${alreadyVoted}`,
+      });
 
-    var save = await fetch(`/idea-modification/${Id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `action=dislike`,
-    });
-
-    var responseUpdateDisLike = await save.json();
-    setBoard(responseUpdateDisLike.searchBoardCompteur);
+      var responseUpdateDisLike = await save.json();
+      setBoard(responseUpdateDisLike.searchBoardCompteur);
+      if (alreadyVoted == 1) {
+        setAlreadyVoted(0);
+      } else if (alreadyVoted == 0) {
+        setAlreadyVoted(-1);
+      }
+    }
   };
 
-  // Tableau d'idées//
+  // Suppression des idées//
 
   var deleteIdeaBbdStore = async (ideaId) => {
     props.deleteIdea(ideaId);
@@ -81,10 +93,19 @@ const Board = (props) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  //Trie des idées par nombre de vote//
+  const sortIdeas = (board) => {
+    console.log(board, "test board");
+    const NewBoard = { ...board };
+    NewBoard.ideaId.sort((a, b) => b.likes - a.likes);
+    setBoard(NewBoard);
+
+    console.log(board, "test 2 board");
+  };
 
   return (
     //bannière et photo de profile//
-    <div>
+    <div className="Board" style={{ height: "120vh" }}>
       <div
         style={{
           height: "200px",
@@ -139,6 +160,17 @@ const Board = (props) => {
               fontSize: "20px",
             }}
             onClick={showModal}
+          />
+          <FilterOutlined
+            style={{
+              cursor: "pointer",
+              marginTop: "18%",
+              marginLeft: "20%",
+              fontSize: "20px",
+            }}
+            onClick={() => {
+              sortIdeas(board);
+            }}
           />
           <Btn
             style={{

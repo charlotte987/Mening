@@ -52,6 +52,7 @@ const IdeaCreation = (props) => {
   }
   return (
     <HeroDiv
+      className="Idea-creation"
       style={{
         paddingLeft: "400px",
         paddingTop: "150px",
