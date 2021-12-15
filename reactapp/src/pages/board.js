@@ -96,20 +96,16 @@ const Board = (props) => {
       >
         {" "}
         <Link to="/" style={{ color: "#313131", fontWeight: "bold" }}>
-          <h4>
-            <i>Powered by Mening</i>
-          </h4>
+          <img
+            src={require("../images/logo.svg")}
+            alt="icon"
+            style={{
+              width: "95px",
+              marginLeft: "5rem",
+              marginTop: "12%",
+            }}
+          ></img>
         </Link>
-        {/* <img
-          src={require("../images/logolacapsule.png")}
-          alt="icon"
-          style={{
-            width: "95px",
-            borderRadius: "5rem",
-            marginLeft: "10rem",
-            marginTop: "12%",
-          }}
-        ></img> */}
       </div>
 
       {/* //Titre et Description// */}
@@ -242,24 +238,24 @@ const Board = (props) => {
       >
         <div>
           <FacebookShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
+            url={`https://mening-app.herokuapp.com/board/${id}`}
+            quote={"An idea ?"}
             hashtag="#React"
             style={{ marginTop: "5%" }}
           >
             <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
           </FacebookShareButton>
           <TwitterShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
+            url={`https://mening-app.herokuapp.com/board/${id}`}
+            quote={"An idea ?"}
             hashtag="#React"
             style={{ marginTop: "5%" }}
           >
             <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
           </TwitterShareButton>
           <EmailShareButton
-            url="https://youtube.com/"
-            quote={"Abonne toi!"}
+            url={`https://mening-app.herokuapp.com/board/${id}`}
+            quote={"An idea ?"}
             hashtag="#React"
             style={{ marginTop: "5%" }}
           >
