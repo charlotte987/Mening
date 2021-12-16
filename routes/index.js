@@ -318,7 +318,7 @@ router.get("/myboard/:id", async function (req, res, next) {
     .populate("ideaId")
     .exec();
 
-  res.json({ board });
+  res.json({ board, result });
 });
 
 // creation de l'idée
