@@ -106,7 +106,7 @@ const Board = (props) => {
 
   return (
     //bannière et photo de profile//
-    <div className="Board" style={{ height: "120vh" }}>
+    <div className="Board">
       <div
         style={{
           height: "200px",
@@ -117,17 +117,17 @@ const Board = (props) => {
         }}
       >
         {" "}
-        <div
-          style={{
-            fontSize: "25px",
-            marginLeft: "60px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-start",
-          }}
-        >
+        <div>
           <Link to="/">
-            <LeftCircleOutlined />
+            <LeftCircleOutlined
+              style={{
+                fontSize: "25px",
+                marginLeft: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            />
           </Link>
         </div>
         <img
