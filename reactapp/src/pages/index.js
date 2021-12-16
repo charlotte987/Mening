@@ -129,30 +129,18 @@ const Home = () => {
           >
             <div>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                nonne merninisti licere mihi ista probare, quae sunt a te dicta?
-                Refert tamen, quo modo.
+                "We finally found the perfect product to centralize feedback"
               </p>
               <Divider orientation="left">
                 Antoine - Program Manager à La Capsule
               </Divider>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                nonne merninisti licere mihi ista probare, quae sunt a te dicta?
-                Refert tamen, quo modo.
-              </p>
-              <Divider orientation="right">Laurent - CEO des kebabs</Divider>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                nonne merninisti licere mihi ista probare, quae sunt a te dicta?
-                Refert tamen, quo modo.
-              </p>
+              <p>"My users are engaged and happy like never before"</p>
+              <Divider orientation="right">
+                François - Cofounder of MyWallet
+              </Divider>
+              <p>"Love the simplicity"</p>
               <Divider orientation="left">Amalia - TripBook's CEO</Divider>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                nonne merninisti licere mihi ista probare, quae sunt a te dicta?
-                Refert tamen, quo modo.
-              </p>
+              <p>"Love it!"</p>
               <Divider orientation="right">Michael - Krier's CEO</Divider>
             </div>
           </div>
