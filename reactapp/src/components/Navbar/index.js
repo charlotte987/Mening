@@ -20,7 +20,7 @@ const Navbar = (props) => {
         <Bars />
         <NavMenu>
           <NavLink to="/about" activeStyle>
-            About
+            How does it work ?
           </NavLink>
 
           {props.isLoggedIn ? (
