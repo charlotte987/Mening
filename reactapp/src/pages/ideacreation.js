@@ -73,7 +73,7 @@ const IdeaCreation = (props) => {
         }}
       >
         <Form.Item name="ideaName">
-          <h1 style={{ fontSize: "25px" }}>Name of the idea</h1>
+          <h1 style={{ fontSize: "25px" }}>Choose an idea name</h1>
 
           <Input
             style={{ width: "500px" }}
@@ -84,7 +84,7 @@ const IdeaCreation = (props) => {
         </Form.Item>
 
         <Form.Item name="descIdea">
-          <h1 style={{ fontSize: "25px" }}>Idea Description</h1>
+          <h1 style={{ fontSize: "25px" }}>A quick description ?</h1>
 
           <TextArea
             style={{ width: "750px" }}
