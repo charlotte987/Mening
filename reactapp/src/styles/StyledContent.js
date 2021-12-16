@@ -94,9 +94,10 @@ export const Cards = styled(Card)`
   margin-top: 10px;
 
   &:hover {
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
     background: #e7d9ff;
     color: #010606;
+    border-radius: 20px;
   }
 `;
 
