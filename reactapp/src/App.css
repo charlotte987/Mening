@@ -95,7 +95,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./images/nnnoise.svg");
 }
 
 .howItWorksTitle {
@@ -110,6 +109,7 @@
 
 .howItWorksTitle > h1 {
   color: black;
+  font-size: 40px;
 }
 
 .parent {
