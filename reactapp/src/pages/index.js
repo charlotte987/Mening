@@ -129,18 +129,33 @@ const Home = () => {
           >
             <div>
               <p>
-                "We finally found the perfect product to centralize feedback"
+                "Mening works like a charm! Only after three days, more than
+                8000 votes and 80 ideas have been submitted. A suggestion with
+                over 1000 upvotes got implemented, and my users are engaged and
+                happy like never before."
               </p>
               <Divider orientation="left">
                 Antoine - Program Manager à La Capsule
               </Divider>
-              <p>"My users are engaged and happy like never before"</p>
+              <p>
+                "As a startup on a tiny budget, we were looking for a
+                super-lightweight customer feedback solution that just worked
+                right out of the box. Mening fits our needs perfectly!"
+              </p>
               <Divider orientation="right">
-                François - Cofounder of MyWallet
+                François - Co-founder of MyWallet
               </Divider>
-              <p>"Love the simplicity"</p>
+              <p>
+                "We are excited to now use a Mening board for our user
+                suggestions! We love hearing from users and this brings our
+                community even closer to each other and our roadmap."
+              </p>
               <Divider orientation="left">Amalia - TripBook's CEO</Divider>
-              <p>"Love it!"</p>
+              <p>
+                "This was fun to build! Shoutout to Mening for the feature
+                requests board. Crazy good service and support, blows the
+                competition away in terms of features and pricing 🤯"
+              </p>
               <Divider orientation="right">Michael - Krier's CEO</Divider>
             </div>
           </div>
