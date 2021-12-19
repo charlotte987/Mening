@@ -42,7 +42,7 @@ const Board = (props) => {
   //compteur de vote//
   const like = async (Id) => {
     props.like(Id);
-    if (alreadyVoted == 0 || alreadyVoted == -1) {
+    if (alreadyVoted === 0 || alreadyVoted === -1) {
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -57,7 +57,7 @@ const Board = (props) => {
 
   const dislike = async (Id) => {
     props.dislike(Id);
-    if (alreadyVoted == 0 || alreadyVoted == 1) {
+    if (alreadyVoted === 0 || alreadyVoted === 1) {
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -66,9 +66,9 @@ const Board = (props) => {
 
       var responseUpdateDisLike = await save.json();
       setBoard(responseUpdateDisLike.searchBoardCompteur);
-      if (alreadyVoted == 1) {
+      if (alreadyVoted === 1) {
         setAlreadyVoted(0);
-      } else if (alreadyVoted == 0) {
+      } else if (alreadyVoted === 0) {
         setAlreadyVoted(-1);
       }
     }

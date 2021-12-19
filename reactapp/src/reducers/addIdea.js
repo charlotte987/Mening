@@ -9,12 +9,12 @@ export default function (ideaContent = [], action) {
       voteCount: action.voteCount,
     });
     return ideaContentCopy;
-  } else if (action.type == "deleteIdea") {
+  } else if (action.type === "deleteIdea") {
     var ideaContentCopy = [...ideaContent];
     var position = null;
 
     for (let i = 0; i < ideaContentCopy.length; i++) {
-      if (ideaContentCopy[i].ideaId == action.ideaId) {
+      if (ideaContentCopy[i].ideaId === action.ideaId) {
         position = i;
       }
     }

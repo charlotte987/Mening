@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { HeroDiv } from "../styles/StyledContent";
 import { connect } from "react-redux";
@@ -25,7 +25,7 @@ const BoardCreation = (props) => {
     console.log(response.saveBoard._id, "tessssst");
     setCheck(true);
   };
-  if (check == true) {
+  if (check === true) {
     return <Navigate to={`/board/${boardId}`} />;
   }
   return (

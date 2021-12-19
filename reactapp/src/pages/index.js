@@ -8,7 +8,6 @@ import {
   BtnLink,
   Btn,
   DivTitle,
-  Feature,
   Line,
   Cards,
 } from "../styles/StyledContent";
@@ -17,7 +16,7 @@ import { connect } from "react-redux";
 import "../App.css";
 
 import "antd/dist/antd.css";
-import { Card, Col, Row, Divider } from "antd";
+import { Col, Row, Divider } from "antd";
 
 const Home = () => {
   return (
@@ -122,7 +121,6 @@ const Home = () => {
             style={{
               display: "flex",
               justifyContent: "center",
-              display: "flex",
               paddingLeft: "30%",
               paddingRight: "30%",
             }}
@@ -154,7 +152,7 @@ const Home = () => {
               <p>
                 "This was fun to build! Shoutout to Mening for the feature
                 requests board. Crazy good service and support, blows the
-                competition away in terms of features and pricing 🤯"
+                competition away in terms of features and pricing."
               </p>
               <Divider orientation="right">Michael - Krier's CEO</Divider>
             </div>

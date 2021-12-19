@@ -1,11 +1,8 @@
 import React from "react";
-import { HeroDiv } from "../styles/StyledContent";
 import Navbar from "../components/Navbar";
-import { Row, Col, Image, Divider, padding } from "antd";
-import Title from "antd/lib/skeleton/Title";
+import { Row, Col } from "antd";
 
 const About = () => {
-  const style = { background: "#0092ff", padding: "8px 0" };
   return (
     <>
       <div className="Index-page">
@@ -50,6 +47,7 @@ const About = () => {
             >
               {" "}
               <img
+                alt="Create feedback boards"
                 style={{
                   justifyContent: "center",
                   borderWidth: 5,
@@ -71,6 +69,7 @@ const About = () => {
               span={12}
             >
               <img
+                alt="Serve your boards seamlessly"
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
@@ -118,6 +117,7 @@ const About = () => {
               span={12}
             >
               <img
+                alt="Collect feedbacks"
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
