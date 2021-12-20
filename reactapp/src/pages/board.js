@@ -117,27 +117,25 @@ const Board = (props) => {
         }}
       >
         {" "}
-        <div>
-          <Link to="/">
-            <LeftCircleOutlined
-              style={{
-                fontSize: "25px",
-                marginLeft: "60px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-start",
-              }}
-            />
-          </Link>
-        </div>
+        <Link to="/">
+          <LeftCircleOutlined
+            style={{
+              fontSize: "25px",
+              padding: "20px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          />
+        </Link>
         <img
           src={require("../images/logo.svg")}
           alt="icon"
           style={{
             width: "95px",
-            borderRadius: "5rem",
-            marginLeft: "15rem",
-            marginTop: "10%",
+
+            marginLeft: "10rem",
+            marginTop: "8%",
           }}
         ></img>
       </div>

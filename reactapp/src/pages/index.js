@@ -39,18 +39,16 @@ const Home = () => {
 
           <HeroImage src={require("../images/idea.svg")} alt="logo" />
         </HeroDiv>
-
-        <hr
-          style={{
-            color: "#000000",
-            backgroundColor: "#000000",
-            height: 0.5,
-            width: 600,
-            borderColor: "#000000",
-            marginLeft: "34%",
-            opacity: 0.2,
-          }}
-        ></hr>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <hr
+            style={{
+              backgroundColor: "#000000",
+              width: 600,
+              borderColor: "#000000",
+              opacity: 0.2,
+            }}
+          ></hr>
+        </div>
 
         <div style={{ paddingBottom: "70px" }}>
           <DivTitle>Features</DivTitle>
@@ -103,18 +101,16 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <hr
-          style={{
-            color: "#000000",
-            backgroundColor: "#000000",
-            height: 0.5,
-            width: 600,
-            borderColor: "#000000",
-            marginLeft: "34%",
-            marginTop: "5%",
-            opacity: 0.2,
-          }}
-        ></hr>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <hr
+            style={{
+              backgroundColor: "#000000",
+              width: 600,
+              borderColor: "#000000",
+              opacity: 0.2,
+            }}
+          ></hr>
+        </div>
         <div>
           <DivTitle>Reviews</DivTitle>
           <div
