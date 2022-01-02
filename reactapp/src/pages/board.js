@@ -41,7 +41,6 @@ const Board = (props) => {
 
   //compteur de vote//
   const like = async (Id) => {
-    props.like(Id);
     if (alreadyVoted == 0 || alreadyVoted == -1) {
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
@@ -56,7 +55,6 @@ const Board = (props) => {
   };
 
   const dislike = async (Id) => {
-    props.dislike(Id);
     if (alreadyVoted == 0 || alreadyVoted == 1) {
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
@@ -77,8 +75,6 @@ const Board = (props) => {
   // Suppression des idées//
 
   var deleteIdeaBbdStore = async (ideaId) => {
-    props.deleteIdea(ideaId);
-
     const response = await fetch(`/delete-idea/${ideaId}`, {
       method: "DELETE",
     });
@@ -314,24 +310,8 @@ const Board = (props) => {
 
 function mapStateToProps(state) {
   return {
-    infos: state.infos,
-    ideaContent: state.ideaContent,
     user: state.user,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    deleteIdea: function (ideaId) {
-      dispatch({ type: "deleteIdea", ideaId });
-    },
-    like: function (Id) {
-      dispatch({ type: "addCountIdea", Id });
-    },
-    dislike: function (Id) {
-      dispatch({ type: "deductCountIdea", Id });
-    },
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps, null)(Board);
+export default connect(mapStateToProps, null)(Board);

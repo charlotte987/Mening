@@ -37,13 +37,6 @@ const IdeaCreation = (props) => {
 
     var response = await save.json();
 
-    props.onAddIdeaClick(
-      idea,
-      ideaDescription,
-      response.saveIdea._id,
-      response.saveIdea.likes,
-      response.saveIdea.voteCount
-    );
     setCheck(true);
   };
 
@@ -93,32 +86,14 @@ const IdeaCreation = (props) => {
           />
         </Form.Item>
 
-        <Button onClick={() => saveIdea(idea, ideaDescription)}>
-          Create
-          {/* <BtnLink to="/board">Create</BtnLink> */}
-        </Button>
+        <Button onClick={() => saveIdea(idea, ideaDescription)}>Create</Button>
       </Form>
     </HeroDiv>
   );
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    onAddIdeaClick: function (idea, ideaDescription, Id, likes, voteCount) {
-      dispatch({
-        type: "addIdea",
-        idea: idea,
-        ideaDescription: ideaDescription,
-        likes: likes,
-        voteCount: voteCount,
-        Id: Id,
-      });
-    },
-  };
-}
-
 function mapStateToProps(state) {
-  return { token: state.token, infos: state.infos };
+  return { token: state.token };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdeaCreation);
+export default connect(mapStateToProps, null)(IdeaCreation);

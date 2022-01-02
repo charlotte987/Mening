@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { HeroDiv } from "../styles/StyledContent";
 import { connect } from "react-redux";
@@ -20,7 +20,7 @@ const BoardCreation = (props) => {
       body: `title=${title}&desc=${desc}&token=${props.token}`,
     });
     var response = await save.json();
-    props.onSubmitTitle(title, desc, response.saveBoard._id); //recuperation de l'id du board (du backend) pour les enregistrer dans le store
+
     setBoardId(response.saveBoard._id);
     console.log(response.saveBoard._id, "tessssst");
     setCheck(true);
@@ -72,7 +72,6 @@ const BoardCreation = (props) => {
         </Form.Item>
 
         <Button onClick={() => saveBoardInfos(title, desc)}>
-          {" "}
           Create
           {/* <BtnLink to={`/board/${boardId}`}>Create</BtnLink> */}
         </Button>
@@ -81,16 +80,8 @@ const BoardCreation = (props) => {
   );
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    onSubmitTitle: function (title, desc, boardId) {
-      dispatch({ type: "saveInfos", title, desc, boardId });
-    },
-  };
-}
-
 function mapStateToProps(state) {
   return { token: state.token };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardCreation);
+export default connect(mapStateToProps, null)(BoardCreation);

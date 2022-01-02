@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages";
 import About from "./pages/about";
-import Pricing from "./pages/pricing";
 
 import Login from "./pages/login";
 import BoardCreation from "./pages/boardcreation";
@@ -13,15 +12,11 @@ import Account from "./pages/Account";
 
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
-import infos from "./reducers/infos";
 import token from "./reducers/token";
 import isLoggedIn from "./reducers/isLoggedIn";
-import ideaContent from "./reducers/addIdea";
 import user from "./reducers/user";
 
-const store = createStore(
-  combineReducers({ token, infos, ideaContent, isLoggedIn, user })
-);
+const store = createStore(combineReducers({ token, isLoggedIn, user }));
 
 function App() {
   return (
@@ -30,7 +25,6 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/pricing" element={<Pricing />} />
           <Route path="/sign-up" element={<Login />} />
           <Route path="/create" element={<BoardCreation />} />
           <Route path="/idea-creation/:id" element={<IdeaCreation />} />

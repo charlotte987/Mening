@@ -16,7 +16,6 @@ const { Meta } = Card;
 
 const Account = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalVisible2, setIsModalVisible2] = useState(false);
 
   const [boardName, setBoardName] = useState([]);
   //Recuperation des boards en DB pour les afficher dans la liste des boards de l'utilisateur
@@ -123,7 +122,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  return { token: state.token, infos: state.infos, user: state.user };
+  return { token: state.token, user: state.user };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);
