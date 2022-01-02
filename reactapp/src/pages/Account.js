@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { Profile, Div, Body, Image } from "../styles/StyledAccount";
+import { Profile, Body, Image } from "../styles/StyledAccount";
 
 import { Card, Avatar, Modal, Button } from "antd";
 import {

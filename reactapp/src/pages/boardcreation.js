@@ -25,7 +25,7 @@ const BoardCreation = (props) => {
     console.log(response.saveBoard._id, "tessssst");
     setCheck(true);
   };
-  if (check == true) {
+  if (check === true) {
     return <Navigate to={`/board/${boardId}`} />;
   }
   return (

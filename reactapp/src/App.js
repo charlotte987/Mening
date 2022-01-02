@@ -1,13 +1,19 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+<<<<<<< HEAD
 import Home from "./pages";
 import About from "./pages/about";
+=======
+import Home from "./pages/Index";
+import About from "./pages/About";
+import Pricing from "./pages/Pricing";
+>>>>>>> d32fc61833ce1a6e2c4befed8ba712d928acf77f
 
-import Login from "./pages/login";
-import BoardCreation from "./pages/boardcreation";
-import IdeaCreation from "./pages/ideacreation";
-import Board from "./pages/board";
+import Login from "./pages/Login";
+import BoardCreation from "./pages/BoardCreation";
+import IdeaCreation from "./pages/IdeaCreation";
+import Board from "./pages/Board";
 import Account from "./pages/Account";
 
 import { Provider } from "react-redux";

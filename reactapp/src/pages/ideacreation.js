@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Button } from "antd";
 import { HeroDiv } from "../styles/StyledContent";
-// import Navbar from "../components/Navbar";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -40,7 +39,7 @@ const IdeaCreation = (props) => {
     setCheck(true);
   };
 
-  if (check == true) {
+  if (check === true) {
     return <Navigate to={`/board/${boardId}`} />;
   }
   return (

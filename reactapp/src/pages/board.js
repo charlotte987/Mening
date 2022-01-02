@@ -41,7 +41,12 @@ const Board = (props) => {
 
   //compteur de vote//
   const like = async (Id) => {
+<<<<<<< HEAD
     if (alreadyVoted == 0 || alreadyVoted == -1) {
+=======
+    props.like(Id);
+    if (alreadyVoted === 0 || alreadyVoted === -1) {
+>>>>>>> d32fc61833ce1a6e2c4befed8ba712d928acf77f
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -55,7 +60,12 @@ const Board = (props) => {
   };
 
   const dislike = async (Id) => {
+<<<<<<< HEAD
     if (alreadyVoted == 0 || alreadyVoted == 1) {
+=======
+    props.dislike(Id);
+    if (alreadyVoted === 0 || alreadyVoted === 1) {
+>>>>>>> d32fc61833ce1a6e2c4befed8ba712d928acf77f
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -64,9 +74,9 @@ const Board = (props) => {
 
       var responseUpdateDisLike = await save.json();
       setBoard(responseUpdateDisLike.searchBoardCompteur);
-      if (alreadyVoted == 1) {
+      if (alreadyVoted === 1) {
         setAlreadyVoted(0);
-      } else if (alreadyVoted == 0) {
+      } else if (alreadyVoted === 0) {
         setAlreadyVoted(-1);
       }
     }
@@ -113,27 +123,25 @@ const Board = (props) => {
         }}
       >
         {" "}
-        <div>
-          <Link to="/">
-            <LeftCircleOutlined
-              style={{
-                fontSize: "25px",
-                marginLeft: "60px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-start",
-              }}
-            />
-          </Link>
-        </div>
+        <Link to="/">
+          <LeftCircleOutlined
+            style={{
+              fontSize: "25px",
+              padding: "20px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          />
+        </Link>
         <img
           src={require("../images/logo.svg")}
           alt="icon"
           style={{
             width: "95px",
-            borderRadius: "5rem",
-            marginLeft: "15rem",
-            marginTop: "10%",
+
+            marginLeft: "10rem",
+            marginTop: "8%",
           }}
         ></img>
       </div>

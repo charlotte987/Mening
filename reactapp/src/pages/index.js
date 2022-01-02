@@ -8,7 +8,6 @@ import {
   BtnLink,
   Btn,
   DivTitle,
-  Feature,
   Line,
   Cards,
 } from "../styles/StyledContent";
@@ -17,7 +16,7 @@ import { connect } from "react-redux";
 import "../App.css";
 
 import "antd/dist/antd.css";
-import { Card, Col, Row, Divider } from "antd";
+import { Col, Row, Divider } from "antd";
 
 const Home = () => {
   return (
@@ -40,18 +39,16 @@ const Home = () => {
 
           <HeroImage src={require("../images/idea.svg")} alt="logo" />
         </HeroDiv>
-
-        <hr
-          style={{
-            color: "#000000",
-            backgroundColor: "#000000",
-            height: 0.5,
-            width: 600,
-            borderColor: "#000000",
-            marginLeft: "34%",
-            opacity: 0.2,
-          }}
-        ></hr>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <hr
+            style={{
+              backgroundColor: "#000000",
+              width: 600,
+              borderColor: "#000000",
+              opacity: 0.2,
+            }}
+          ></hr>
+        </div>
 
         <div style={{ paddingBottom: "70px" }}>
           <DivTitle>Features</DivTitle>
@@ -104,25 +101,22 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <hr
-          style={{
-            color: "#000000",
-            backgroundColor: "#000000",
-            height: 0.5,
-            width: 600,
-            borderColor: "#000000",
-            marginLeft: "34%",
-            marginTop: "5%",
-            opacity: 0.2,
-          }}
-        ></hr>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <hr
+            style={{
+              backgroundColor: "#000000",
+              width: 600,
+              borderColor: "#000000",
+              opacity: 0.2,
+            }}
+          ></hr>
+        </div>
         <div>
           <DivTitle>Reviews</DivTitle>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              display: "flex",
               paddingLeft: "30%",
               paddingRight: "30%",
             }}
@@ -154,7 +148,7 @@ const Home = () => {
               <p>
                 "This was fun to build! Shoutout to Mening for the feature
                 requests board. Crazy good service and support, blows the
-                competition away in terms of features and pricing 🤯"
+                competition away in terms of features and pricing."
               </p>
               <Divider orientation="right">Michael - Krier's CEO</Divider>
             </div>
