@@ -41,12 +41,7 @@ const Board = (props) => {
 
   //compteur de vote//
   const like = async (Id) => {
-<<<<<<< HEAD
     if (alreadyVoted == 0 || alreadyVoted == -1) {
-=======
-    props.like(Id);
-    if (alreadyVoted === 0 || alreadyVoted === -1) {
->>>>>>> d32fc61833ce1a6e2c4befed8ba712d928acf77f
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -60,12 +55,7 @@ const Board = (props) => {
   };
 
   const dislike = async (Id) => {
-<<<<<<< HEAD
     if (alreadyVoted == 0 || alreadyVoted == 1) {
-=======
-    props.dislike(Id);
-    if (alreadyVoted === 0 || alreadyVoted === 1) {
->>>>>>> d32fc61833ce1a6e2c4befed8ba712d928acf77f
       var save = await fetch(`/idea-modification/${Id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
